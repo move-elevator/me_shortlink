@@ -1,0 +1,7 @@
+Todo's:
+- Code-Review
+- Unit-Test fertigstellen
+
+Features:
+- Download-Statistik als BE-Modul
+- Upload-Plugin

@@ -1,0 +1,14 @@
+plugin.tx_meshortlink {
+	view {
+		# cat=plugin.tx_meshortlink/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:me_shortlink/Resources/Private/Templates/
+		# cat=plugin.tx_meshortlink/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:me_shortlink/Resources/Private/Partials/
+		# cat=plugin.tx_meshortlink/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:me_shortlink/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_meshortlink//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

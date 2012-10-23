@@ -1,0 +1,7 @@
+Versionshistorie / Änderungen:
+
+0.0.2   18.10.12    release 0.0.2 
+		    1. Fehlerbehebung
+		    2. Kategorien sind nun optinal wählbar
+
+0.0.1   16.10.12    first release
