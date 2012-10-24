@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
-		<header/>
-		<body>
-
-			<trans-unit id="title.description">
-				<source>title</source>
-			</trans-unit>
-			<trans-unit id="page.description">
-				<source>page</source>
-			</trans-unit>
-			<trans-unit id="url.description">
-				<source>url</source>
-			</trans-unit>
-			<trans-unit id="params.description">
-				<source>params</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
+	<header/>
+	<body>
+	    <trans-unit id="title.description">
+		<source>The Shortlink e.g. "asdf"</source>
+	    </trans-unit>
+	    <trans-unit id="page.description">
+		<source>The target page for the shortlink</source>
+	    </trans-unit>
+	    <trans-unit id="url.description">
+		<source>An external URL e.g. "http://www.move-elevator.de"</source>
+	    </trans-unit>
+	    <trans-unit id="params.description">
+		<source>Optional GET-Params e.g. "track=1"</source>
+	    </trans-unit>
+	</body>
+    </file>
+    <file source-language="de" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
+	<header/>
+	<body>
+	    <trans-unit id="title.description">
+		<source>Der Shortlink z.B. "asdf"</source>
+	    </trans-unit>
+	    <trans-unit id="page.description">
+		<source>Die Zielseite des Shortlinks</source>
+	    </trans-unit>
+	    <trans-unit id="url.description">
+		<source>Eine externe URL z.b. "http://www.move-elevator.de"</source>
+	    </trans-unit>
+	    <trans-unit id="params.description">
+		<source>Optionale GET-Parameter z.b. "track=1"</source>
+	    </trans-unit>
+	</body>
+    </file>
 </xliff>

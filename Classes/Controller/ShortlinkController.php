@@ -29,20 +29,20 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionContro
      * @return void
      */
     public function redirectAction() {
-	$request_uri = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : '';
-	$http_host = (isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : '';
+	$requestUri = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : '';
+	$httpHost = (isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : '';
 
-	$linkPath = pathinfo($http_host . $request_uri);
+	$linkPath = pathinfo($httpHost . $requestUri);
 	$shortLinkToCheck = isset($linkPath['filename']) ? $linkPath['filename'] : '';
 
 	$shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
 	
-	$domains = $this->domainRepository->findByName($http_host);
+	$domains = $this->domainRepository->findByName($httpHost);
 	$domain = $domains->current();
 
 	if (is_object($shortLinks) && count($shortLinks) > 0) {
 	    foreach ($shortLinks as $shortLink) {
-		if (isset($domain)) {
+		if ($domain) {
 		    if ($domain->getPid() != $shortLink->getPid()) {
 			continue;
 		    }

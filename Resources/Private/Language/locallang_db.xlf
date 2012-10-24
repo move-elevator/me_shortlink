@@ -1,32 +1,56 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
-		<header/>
-		<body>
+    <file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
+	<header/>
+	<body>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink">
+		<source>Shortlink</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.title">
+		<source>Shortlink</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.page">
+		<source>Target-Page</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
+		<source>External-Url</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
+		<source>optional GET-Params</source>
+	    </trans-unit>
 
-			<trans-unit id="tx_meshortlink_domain_model_shortlink">
-				<source>Shortlink</source>
-			</trans-unit>
-			<trans-unit id="tx_meshortlink_domain_model_shortlink.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_meshortlink_domain_model_shortlink.page">
-				<source>Page</source>
-			</trans-unit>
-			<trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-				<source>Url</source>
-			</trans-unit>
-			<trans-unit id="tx_meshortlink_domain_model_shortlink.params">
-				<source>Params</source>
-			</trans-unit>
-
-			<trans-unit id="tx_meshortlink_domain_model_domain">
-				<source>Domain</source>
-			</trans-unit>
-			<trans-unit id="tx_meshortlink_domain_model_domain.name">
-				<source>Name</source>
-			</trans-unit>
-
-		</body>
-	</file>
+	    <trans-unit id="tx_meshortlink_domain_model_domain">
+		<source>Shortlink-Domain</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_domain.name">
+		<source>Domain</source>
+	    </trans-unit>
+	</body>
+    </file>
+    <file source-language="de" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
+	<header/>
+	<body>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink">
+		<source>Shortlink</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.title">
+		<source>Shortlink</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.page">
+		<source>Zielseite</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
+		<source>Externe Url</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
+		<source>optionale GET-Parameter</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_domain">
+		<source>Shortlink-Domain</source>
+	    </trans-unit>
+	    <trans-unit id="tx_meshortlink_domain_model_domain.name">
+		<source>Domain</source>
+	    </trans-unit>
+	</body>
+    </file>
 </xliff>
