@@ -66,6 +66,11 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return string $url
 	 */
 	public function getUrl() {
+		if(strlen($this->url) > 0){
+		    if(substr($this->url,0,4) !== 'http'){
+			return 'http://'.$this->url;
+		    }
+		}
 		return $this->url;
 	}
 
@@ -81,6 +86,11 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return string $params
 	 */
 	public function getParams() {
+		if(strlen($this->params) > 0){
+		    if($this->params{0} !== '&'){
+			return '&'.$this->params;
+		    }
+		}
 		return $this->params;
 	}
 

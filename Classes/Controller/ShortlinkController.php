@@ -18,14 +18,10 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionContro
     protected $shortlinkRepository;
 
     /**
-     * action list
-     *
-     * @return void
+     * @var \MoveElevator\MeShortlink\Domain\Repository\DomainRepository
+     * @inject
      */
-    public function listAction() {
-	$shortlinks = $this->shortlinkRepository->findAll();
-	$this->view->assign('shortlinks', $shortlinks);
-    }
+    protected $domainRepository;
 
     /**
      * action redirect
@@ -33,7 +29,34 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionContro
      * @return void
      */
     public function redirectAction() {
-	var_dump($this->shortlinkRepository);
+	$request_uri = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : '';
+	$http_host = (isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : '';
+
+	$linkPath = pathinfo($http_host . $request_uri);
+	$shortLinkToCheck = isset($linkPath['filename']) ? $linkPath['filename'] : '';
+
+	$shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
+	
+	$domains = $this->domainRepository->findByName($http_host);
+	$domain = $domains->current();
+
+	if (is_object($shortLinks) && count($shortLinks) > 0) {
+	    foreach ($shortLinks as $shortLink) {
+		if (isset($domain)) {
+		    if ($domain->getPid() != $shortLink->getPid()) {
+			continue;
+		    }
+		}
+		header("HTTP/1.0 301 Moved Permanently");
+		header("Status: 301 Moved Permanently");
+		if ($shortLink->getPage() != '') {
+		    header("Location: " . \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl("index.php?id=" . $shortLink->getPage() . $shortLink->getParams()), true, 301);
+		} else if ($shortLink->getUrl()) {
+		    header("Location: " . $shortLink->getUrl(), true, 301);
+		}
+		exit;
+	    }
+	}
     }
 
 }

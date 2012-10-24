@@ -3,11 +3,9 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	'MoveElevator.'.$_EXTKEY,
-	'Shortlink',
-	'Shortlink'
-);
+if (\TYPO3\CMS\Core\Extension\ExtensionManager::isLoaded('extbase')) {
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'Shortlink', 'Shortlink');
+}
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'm:e Shortlink Manager');
 
@@ -22,8 +20,7 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 		'cruser_id' => 'cruser_id',
 		'dividers2tabs' => TRUE,
 
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
+		
 		'origUid' => 't3_origuid',
 		'languageField' => 'sys_language_uid',
 		'transOrigPointerField' => 'l10n_parent',
