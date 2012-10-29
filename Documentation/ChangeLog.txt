@@ -1,3 +1,4 @@
 Versionshistorie / Änderungen:
 
+0.0.2   27.10.12    realUrl support
 0.0.1   24.10.12    first release

@@ -1,5 +1,4 @@
 Todo's:
-- RealUrl Links bei Weiterleitung generieren, bisher leider nur index.php?id=xx
 - Code-Review
 - Unit-Test fertigstellen
 

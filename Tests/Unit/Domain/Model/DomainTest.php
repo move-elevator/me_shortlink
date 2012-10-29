@@ -66,6 +66,5 @@ class Tx_MeShortlink_Domain_Model_DomainTest extends Tx_Extbase_Tests_Unit_BaseT
 			$this->fixture->getName()
 		);
 	}
-	
 }
 ?>
