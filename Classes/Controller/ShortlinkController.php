@@ -9,7 +9,7 @@ namespace MoveElevator\MeShortlink\Controller;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class ShortlinkController extends \TYPO3\CMS\Extbase\MVC\Controller\ActionController
+class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
      * @var \MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository
