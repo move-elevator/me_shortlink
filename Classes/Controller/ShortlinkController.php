@@ -4,6 +4,7 @@ namespace MoveElevator\MeShortlink\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Extension\ExtensionManager;
+use TYPO3\CMS\Core\Utility\HttpUtility;
 
 /**
  * @author Sascha Seyfert <sef@move-elevator.de>
@@ -53,6 +54,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
 		$url = $this->getRedirectUrl($shortLink);
 		if ($url) {
+		    HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);
 		    $this->redirectToPage($url);
 		}
 	    }
@@ -83,18 +85,6 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	    $url = $shortLink->getUrl();
 	}
 	return $url;
-    }
-
-    /**
-     * Redirect to url by 301
-     * @param string $url
-     * @return void
-     */
-    protected function redirectToPage($url) {
-	header("HTTP/1.0 301 Moved Permanently");
-	header("Status: 301 Moved Permanently");
-	header("Location: " . $url, true, 301);
-	exit;
     }
 
     /**
