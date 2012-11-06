@@ -63,7 +63,7 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     /**
      * @test
      */
-    public function SetUrlWithOutHttpAndGetsSame() {
+    public function SetUrlWithOutHttpAndGetsWithHttp() {
         $this->object->setUrl($this->testConfig['urlWithOutHTTP']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
     }
@@ -79,7 +79,7 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     /**
      * @test
      */
-    public function SetParamsWithOutAmpAndGetsSame() {
+    public function SetParamsWithOutAmpAndGetsWithAmp() {
         $this->object->setParams($this->testConfig['paramsWithOutAmp']);
         $this->assertSame($this->object->getParams(), $this->testConfig['paramsWithAmp']);
     }
