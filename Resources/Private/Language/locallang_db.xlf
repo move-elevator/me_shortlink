@@ -3,6 +3,9 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
 	<header/>
 	<body>
+	    <trans-unit id="me_shortlink">
+		<source>m:e Shortlink</source>
+	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink">
 		<source>Shortlink</source>
 	    </trans-unit>
@@ -30,6 +33,9 @@
     <file source-language="de" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z" product-name="me_shortlink">
 	<header/>
 	<body>
+	    <trans-unit id="me_shortlink">
+		<source>m:e Shortlink</source>
+	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink">
 		<source>Shortlink</source>
 	    </trans-unit>

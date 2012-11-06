@@ -3,13 +3,6 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin($_EXTKEY, 'Shortlink', 'Shortlink');
-}
-
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'm:e Shortlink Manager');
-
-t3lib_extMgm::addLLrefForTCAdescr('tx_meshortlink_domain_model_shortlink', 'EXT:me_shortlink/Resources/Private/Language/locallang_csh_tx_meshortlink_domain_model_shortlink.xlf');
 t3lib_extMgm::allowTableOnStandardPages('tx_meshortlink_domain_model_shortlink');
 $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 	'ctrl' => array(
@@ -37,7 +30,6 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_meshortlink_domain_model_domain', 'EXT:me_shortlink/Resources/Private/Language/locallang_csh_tx_meshortlink_domain_model_domain.xlf');
 t3lib_extMgm::allowTableOnStandardPages('tx_meshortlink_domain_model_domain');
 $TCA['tx_meshortlink_domain_model_domain'] = array(
 	'ctrl' => array(
