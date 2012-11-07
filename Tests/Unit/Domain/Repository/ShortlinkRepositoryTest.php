@@ -22,7 +22,7 @@ class ShortlinkRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase
     public function setUp() {
         $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
 	$this->testConfig = array(
-	    'title' => 'Foo',
+	    'title' => 'ShortlinkRepositoryTest',
 	    'page' => 1,
 	    'url' => '',
 	    'params' => '&foo=bar'
