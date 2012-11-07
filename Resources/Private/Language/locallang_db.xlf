@@ -16,7 +16,7 @@
 		<source>Target-Page</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-		<source>External-Url</source>
+		<source>External-Url (if no page selected)</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
 		<source>optional GET-Params</source>
@@ -46,7 +46,7 @@
 		<source>Zielseite</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-		<source>Externe Url</source>
+		<source>oder Externe Url (wenn keine Seite gewählt wurde)</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
 		<source>optionale GET-Parameter</source>
