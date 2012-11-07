@@ -30,10 +30,7 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->repositoryObject);
     }
 
-    /**
-     * @test
-     */
-    public function getRedirectUrlTest() {
+    public function testGetRedirectUrl() {
         $this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\ShortlinkRepository');
         $this->fixtureUid = $this->testingFramework->createRecord(
                 'tx_meshortlink_domain_model_shortlink', array (
