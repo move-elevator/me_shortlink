@@ -2,12 +2,6 @@
 
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Model;
 
-/**
- * Test case for class '\MoveElevator\MeShortlink\Domain\Model\Shortlink'
- *
- * @package me_shortlink
- * @subpackage Tests
- */
 class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
     /**
@@ -36,50 +30,32 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->object);
     }
 
-    /**
-     * @test
-     */
-    public function SetTitleStringAndGetsSame() {
+    public function testSetTitleStringAndGetsSame() {
         $this->object->setTitle($this->testConfig['title']);
         $this->assertSame($this->object->getTitle(), $this->testConfig['title']);
     }
     
-    /**
-     * @test
-     */
-    public function SetPageIntAndGetsSame() {
+    public function testSetPageIntAndGetsSame() {
         $this->object->setPage($this->testConfig['page']);
         $this->assertSame($this->object->getPage(), $this->testConfig['page']);
     }
     
-    /**
-     * @test
-     */
-    public function SetUrlWithHttpAndGetsSame() {
+    public function testSetUrlWithHttpAndGetsSame() {
         $this->object->setUrl($this->testConfig['urlWithHTTP']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
     }
     
-    /**
-     * @test
-     */
-    public function SetUrlWithOutHttpAndGetsWithHttp() {
+    public function testSetUrlWithOutHttpAndGetsWithHttp() {
         $this->object->setUrl($this->testConfig['urlWithOutHTTP']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
     }
     
-    /**
-     * @test
-     */
-    public function SetParamsWithAmpAndGetsSame() {
+    public function testSetParamsWithAmpAndGetsSame() {
         $this->object->setParams($this->testConfig['paramsWithAmp']);
         $this->assertSame($this->object->getParams(), $this->testConfig['paramsWithAmp']);
     }
     
-    /**
-     * @test
-     */
-    public function SetParamsWithOutAmpAndGetsWithAmp() {
+    public function testSetParamsWithOutAmpAndGetsWithAmp() {
         $this->object->setParams($this->testConfig['paramsWithOutAmp']);
         $this->assertSame($this->object->getParams(), $this->testConfig['paramsWithAmp']);
     }

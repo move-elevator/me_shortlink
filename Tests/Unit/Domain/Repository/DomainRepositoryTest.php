@@ -2,12 +2,6 @@
 
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Repository;
 
-/**
- * Test case for class '\MoveElevator\MeShortlink\Domain\Repository\DomainRepository'
- *
- * @package me_shortlink
- * @subpackage Tests
- */
 class DomainRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
     /**
@@ -19,9 +13,22 @@ class DomainRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
      * @var  \MoveElevator\MeShortlink\Domain\Repository\DomainRepository
      */
     protected $repositoryObject;
+    
+    /*
+     * @var array
+     */
+    protected $testConfig;
 
     public function setUp() {
+	$this->testConfig = array(
+	    'domain' => 'www.move-elevator.de'
+	);	
+	
         $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
+	$this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\DomainRepository');
+        $this->testingFramework->createRecord(
+                'tx_meshortlink_domain_model_domain', array ('name' => $this->testConfig['domain'])
+        );
     }
 
     public function tearDown() {
@@ -30,19 +37,15 @@ class DomainRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->repositoryObject);
     }
 
-    /**
-     * @test
-     */
-    public function createDomainRecords() {
-        $this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\DomainRepository');
-        $this->fixtureUid = $this->testingFramework->createRecord(
-                'tx_meshortlink_domain_model_domain', array ('name' => 'www.google.de')
-        );
-        
+    public function testFindByDomainName() {
 	$querySettings =new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
 	$querySettings->setRespectStoragePage(FALSE);
 	$this->repositoryObject->setDefaultQuerySettings($querySettings);
-        $this->assertEquals($this->repositoryObject->findByUid($this->fixtureUid)->getName(), 'www.google.de');
+	/*
+	 * @var \MoveElevator\MeShortlink\Domain\Model\Domain
+	 */
+	$domainObject = $this->repositoryObject->findByDomainName($this->testConfig['domain'])->current();
+        $this->assertEquals($domainObject->getName(), $this->testConfig['domain']);
     }
 }
 

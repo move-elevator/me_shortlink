@@ -9,7 +9,6 @@ class GeneralUtility {
      * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink
      * @return string
      */
-    
     public static function getRedirectUrl($shortLink) {
 	if ($shortLink->getPage() != '') {
 	    if (ExtensionManagementUtility::isLoaded('realurl')) {

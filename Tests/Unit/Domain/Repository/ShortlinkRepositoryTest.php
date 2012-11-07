@@ -2,12 +2,6 @@
 
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Repository;
 
-/**
- * Test case for class '\MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository'
- *
- * @package me_shortlink
- * @subpackage Tests
- */
 class ShortlinkRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
     /**
@@ -19,9 +13,30 @@ class ShortlinkRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase
      * @var  \MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository
      */
     protected $repositoryObject;
+    
+    /*
+     * @var array
+     */
+    protected $testConfig;
 
     public function setUp() {
         $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
+	$this->testConfig = array(
+	    'title' => 'Foo',
+	    'page' => 1,
+	    'url' => '',
+	    'params' => '&foo=bar'
+	);
+	
+	$this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\ShortlinkRepository');
+        $this->testingFramework->createRecord(
+                'tx_meshortlink_domain_model_shortlink', array (
+		    'title' => $this->testConfig['title'],
+		    'page' => $this->testConfig['page'],
+		    'url' => $this->testConfig['url'],
+		    'params' => $this->testConfig['params'],
+		)
+        );
     }
 
     public function tearDown() {
@@ -30,24 +45,12 @@ class ShortlinkRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase
         unset($this->repositoryObject);
     }
 
-    /**
-     * @test
-     */
-    public function createShortlinkRecords() {
-        $this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\ShortlinkRepository');
-        $this->fixtureUid = $this->testingFramework->createRecord(
-                'tx_meshortlink_domain_model_shortlink', array (
-		    'title' => 'fooo',
-		    'page' => 1,
-		    'url' => '',
-		    'params' => '&foo=bar'
-		)
-        );
-        
+    public function testFindByRequest() {
 	$querySettings =new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
 	$querySettings->setRespectStoragePage(FALSE);
 	$this->repositoryObject->setDefaultQuerySettings($querySettings);
-        $this->assertEquals($this->repositoryObject->findByUid($this->fixtureUid)->getTitle(), 'fooo');
+	$shortlinkObject = $this->repositoryObject->findByRequest($this->testConfig['title'])->current();
+        $this->assertEquals($shortlinkObject->getTitle(), $this->testConfig['title']);
     }
 }
 
