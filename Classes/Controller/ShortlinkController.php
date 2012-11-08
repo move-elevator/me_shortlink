@@ -35,7 +35,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			continue;
 		    }
 		    $url = \MoveElevator\MeShortlink\Utility\GeneralUtility::getRedirectUrl($shortLink);
-		    if (isset($url) && trim($url) !== '') {
+		    if (\TYPO3\CMS\Core\Utility\GeneralUtility::isValidUrl($url)) {
 			HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);
 			$this->redirectToPage($url);
 		    }

@@ -19,6 +19,21 @@ class GeneralUtility {
 	}
 	return $url;
     }
+    
+    /**
+     * Returns full URL of internal Page with optinal Params
+     * @param string $shortlinkParams
+     * @return array
+     */
+    public function getInternalUrl($shortLink) {
+	if (ExtensionManagementUtility::isLoaded('realurl')) {
+	    $realUrlParams = \TYPO3\CMS\Core\Utility\GeneralUtility::explodeUrl2Array($shortLink->getParams());
+	    $url = self::getSpeakingUrlFromRealUrl($shortLink->getPage(), $realUrlParams);
+	} else {
+	    $url = 'index.php?id=' . $shortLink->getPage() . $shortLink->getParams();
+	}
+	return \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($url);
+    }
 
     /**
      * Get Speaking path from RealUrl Extension
@@ -40,21 +55,6 @@ class GeneralUtility {
 	$realUrl->encodeSpURL($conf, $this);
 	$url = $conf['LD']['totalURL'];
 	return $url;
-    }
-
-    /**
-     * Returns full URL of internal Page with optinal Params
-     * @param string $shortlinkParams
-     * @return array
-     */
-    public function getInternalUrl($shortLink) {
-	if (ExtensionManagementUtility::isLoaded('realurl')) {
-	    $realUrlParams = \TYPO3\CMS\Core\Utility\GeneralUtility::explodeUrl2Array($shortLink->getParams());
-	    $url = self::getSpeakingUrlFromRealUrl($shortLink->getPage(), $realUrlParams);
-	} else {
-	    $url = 'index.php?id=' . $shortLink->getPage() . $shortLink->getParams();
-	}
-	return \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($url);
     }
 
 }
