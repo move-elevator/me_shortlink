@@ -1,9 +1,11 @@
 <?php
 
 namespace MoveElevator\MeShortlink\Utility;
+
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 class GeneralUtility {
+
     /**
      * Get url from Shortlink
      * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink
@@ -11,19 +13,7 @@ class GeneralUtility {
      */
     public static function getRedirectUrl($shortLink) {
 	if ($shortLink->getPage() != '') {
-	    if (ExtensionManagementUtility::isLoaded('realurl')) {
-		$paramsTemp = explode('&', $shortLink->getParams());
-		$params = array();
-		foreach ($paramsTemp as $param) {
-		    $paramValue = explode('=', $param);
-		    if (isset($paramValue[0]) && isset($paramValue[1]))
-			$params[$paramValue[0]] = $paramValue[1];
-		}
-		$url = self::getSpeakingUrlFromRealUrl($shortLink->getPage(), $params);
-	    } else {
-		$url = 'index.php?id=' . $shortLink->getPage() . $shortLink->getParams();
-	    }
-	    $url = \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($url);
+	    $url = self::getInternalUrl($shortLink);
 	} else if ($shortLink->getUrl()) {
 	    $url = $shortLink->getUrl();
 	}
@@ -41,8 +31,7 @@ class GeneralUtility {
 	$GLOBALS['TSFE']->tmpl = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_TStemplate');
 	$GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
 
-	$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'pages', 'uid = ' . (int) $pid);
-	$pageRow = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+	$pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int) $pid);
 	if ($pageRow) {
 	    $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', \TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $params));
 	}
@@ -52,6 +41,22 @@ class GeneralUtility {
 	$url = $conf['LD']['totalURL'];
 	return $url;
     }
+
+    /**
+     * Returns full URL of internal Page with optinal Params
+     * @param string $shortlinkParams
+     * @return array
+     */
+    public function getInternalUrl($shortLink) {
+	if (ExtensionManagementUtility::isLoaded('realurl')) {
+	    $realUrlParams = \TYPO3\CMS\Core\Utility\GeneralUtility::explodeUrl2Array($shortLink->getParams());
+	    $url = self::getSpeakingUrlFromRealUrl($shortLink->getPage(), $realUrlParams);
+	} else {
+	    $url = 'index.php?id=' . $shortLink->getPage() . $shortLink->getParams();
+	}
+	return \TYPO3\CMS\Core\Utility\GeneralUtility::locationHeaderUrl($url);
+    }
+
 }
 
 ?>

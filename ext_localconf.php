@@ -17,7 +17,5 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
 	    )
     );
     $TYPO3_CONF_VARS['SC_OPTIONS']['tslib/index_ts.php']['preBeUser'][] = 'MoveElevator\MeShortlink\Service\CheckAlternativeIdMethods->redirect';
-    
-    //$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/index_ts.php']['preBeUser'][] = "EXT:me_shortlink/Classes/Service/class.CheckAlternativeIdMethods.php:&redirect";
 }
 ?>
