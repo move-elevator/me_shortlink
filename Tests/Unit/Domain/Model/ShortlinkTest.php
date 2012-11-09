@@ -21,6 +21,7 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	    'page' => 1,
 	    'urlWithHTTP' => 'http://www.move-elevator.de',
 	    'urlWithOutHTTP' => 'www.move-elevator.de',
+	    'urlWithHTTPS' => 'https://www.move-elevator.de',
 	    'paramsWithAmp' => '&foo=bar',
 	    'paramsWithOutAmp' => 'foo=bar',
 	);
@@ -43,6 +44,11 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     public function testSetUrlWithHttpAndGetsSame() {
 	$this->object->setUrl($this->testConfig['urlWithHTTP']);
 	$this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
+    }
+    
+    public function testSetUrlWithHttpsAndGetsSame() {
+	$this->object->setUrl($this->testConfig['urlWithHTTPS']);
+	$this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTPS']);
     }
 
     public function testSetUrlWithOutHttpAndGetsWithHttp() {

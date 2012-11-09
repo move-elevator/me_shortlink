@@ -12,10 +12,13 @@ class GeneralUtility {
      * @return string
      */
     public static function getRedirectUrl($shortLink) {
-	if ($shortLink->getPage() != '') {
+	if (intval($shortLink->getPage()) > 0) {
 	    $url = self::getInternalUrl($shortLink);
 	} else if ($shortLink->getUrl()) {
 	    $url = $shortLink->getUrl();
+	} else {
+	    //syslog
+	    $url = '';
 	}
 	return $url;
     }
@@ -45,7 +48,7 @@ class GeneralUtility {
 	$GLOBALS['TSFE']->sys_page = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_pageSelect');
 	$GLOBALS['TSFE']->tmpl = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_TStemplate');
 	$GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
-
+	
 	$pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int) $pid);
 	if ($pageRow) {
 	    $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', \TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $params));

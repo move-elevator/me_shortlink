@@ -1,4 +1,4 @@
-qVersionshistorie / Änderungen:
+Versionshistorie / Änderungen:
 
 0.0.4   07.11.12    code cleanup, unit tests
 0.0.3   06.11.12    code cleanup
