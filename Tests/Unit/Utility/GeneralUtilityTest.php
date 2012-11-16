@@ -48,6 +48,12 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	$this->assertEquals($redirectUrl, 'http://move-elevator.de');
     }
 
+    public function testGetValidShortlink(){
+	$utilityObject = $this->objectManager->get('MoveElevator\\MeShortlink\\Utility\\GeneralUtility');
+	$this->assertFalse($utilityObject::getValidShortlink('*foo-bar_batz23.html'));
+	$this->assertSame('foo-bar_batz23',$utilityObject::getValidShortlink('foo-bar_batz23'));
+    }
+
 }
 
 ?>

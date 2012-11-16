@@ -21,9 +21,9 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function redirectAction() {
 	$requestUri = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('REQUEST_URI');
 	$httpHost = \TYPO3\CMS\Core\Utility\GeneralUtility::getHostname();
+	$shortLinkToCheck = \MoveElevator\MeShortlink\Utility\GeneralUtility::getValidShortlink($requestUri);
 
-	$shortLinkToCheck = pathinfo($httpHost . $requestUri, PATHINFO_FILENAME);
-	if ($shortLinkToCheck !== '') {
+	if ($shortLinkToCheck !== FALSE) {
 	    $shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
 	    $domains = $this->domainRepository->findByName($httpHost);
 	    $domain = $domains->current();

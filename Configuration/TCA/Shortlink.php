@@ -6,54 +6,16 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 	'ctrl' => $TCA['tx_meshortlink_domain_model_shortlink']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, page, url, params',
+		'showRecordFieldList' => 'hidden, title, page, url, params',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, page, params,url,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'hidden;;1, title,page;;2;;3-3-3,url,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
+		'2' => array('showitem' => 'params'),
 	),
 	'columns' => array(
-		'sys_language_uid' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'sys_language',
-				'foreign_table_where' => 'ORDER BY sys_language.title',
-				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
-				),
-			),
-		),
-		'l10n_parent' => array(
-			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-			'config' => array(
-				'type' => 'select',
-				'items' => array(
-					array('', 0),
-				),
-				'foreign_table' => 'tx_meshortlink_domain_model_shortlink',
-				'foreign_table_where' => 'AND tx_meshortlink_domain_model_shortlink.pid=###CURRENT_PID### AND tx_meshortlink_domain_model_shortlink.sys_language_uid IN (-1,0)',
-			),
-		),
-		'l10n_diffsource' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
-		't3ver_label' => array(
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'max' => 255,
-			)
-		),
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
@@ -99,7 +61,9 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim,required'
+				'eval' => 'trim,required,alphanum_x,nospace',
+				'max' => 30,
+				
 			),
 		),
 		'page' => array(

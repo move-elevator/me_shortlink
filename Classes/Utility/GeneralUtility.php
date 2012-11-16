@@ -6,6 +6,22 @@ use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 class GeneralUtility {
 
+    public static function getValidShortlink($url) {
+	$parts = preg_split('/(\/)|(\.)/', $url,-1,PREG_SPLIT_NO_EMPTY);
+	if (count($parts) > 1) {
+	    return false;
+	}
+	$lastPart = array_pop($parts);
+	if(!preg_match('/^([a-zA-Z0-9-_]{3,30})$/', $lastPart)){
+	   return false; 
+	}
+	if (strlen($lastPart) < 30 && strlen($lastPart) > 2) {
+	    return $lastPart;
+	} else {
+	    return false;
+	}
+    }
+
     /**
      * Get url from Shortlink
      * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink
@@ -22,7 +38,7 @@ class GeneralUtility {
 	}
 	return $url;
     }
-    
+
     /**
      * Returns full URL of internal Page with optinal Params
      * @param string $shortlinkParams
@@ -48,7 +64,7 @@ class GeneralUtility {
 	$GLOBALS['TSFE']->sys_page = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_pageSelect');
 	$GLOBALS['TSFE']->tmpl = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_TStemplate');
 	$GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
-	
+
 	$pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int) $pid);
 	if ($pageRow) {
 	    $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', \TYPO3\CMS\Core\Utility\GeneralUtility::implodeArrayForUrl('', $params));
