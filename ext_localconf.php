@@ -10,9 +10,7 @@ if (!defined('TYPO3_MODE')) {
 if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin('MoveElevator.' . $_EXTKEY, 'Shortlink', array(
 	'Shortlink' => 'redirect',
-	    ),
-	    // non-cacheable actions
-	    array(
+	    ), array(
 	'Shortlink' => 'redirect',
 	    )
     );

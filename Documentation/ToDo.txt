@@ -1,7 +1,2 @@
-Todo's:
-- Code-Review
-- Unit-Test fertigstellen
-
-
 Features:
 - Aufrufstatistik als BE-Modul

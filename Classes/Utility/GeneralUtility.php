@@ -7,13 +7,13 @@ use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 class GeneralUtility {
 
     public static function getValidShortlink($url) {
-	$parts = preg_split('/(\/)|(\.)/', $url,-1,PREG_SPLIT_NO_EMPTY);
+	$parts = preg_split('/(\/)|(\.)/', $url, -1, PREG_SPLIT_NO_EMPTY);
 	if (count($parts) > 1) {
 	    return false;
 	}
 	$lastPart = array_pop($parts);
-	if(!preg_match('/^([a-zA-Z0-9-_]{3,30})$/', $lastPart)){
-	   return false; 
+	if (!preg_match('/^([a-zA-Z0-9-_]{3,30})$/', $lastPart)) {
+	    return false;
 	} else {
 	    return $lastPart;
 	}
