@@ -14,11 +14,8 @@ class GeneralUtility {
 	$lastPart = array_pop($parts);
 	if(!preg_match('/^([a-zA-Z0-9-_]{3,30})$/', $lastPart)){
 	   return false; 
-	}
-	if (strlen($lastPart) < 30 && strlen($lastPart) > 2) {
-	    return $lastPart;
 	} else {
-	    return false;
+	    return $lastPart;
 	}
     }
 

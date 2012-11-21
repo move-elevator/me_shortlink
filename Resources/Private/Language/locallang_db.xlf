@@ -13,10 +13,10 @@
 		<source>Shortlink</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.page">
-		<source>Target-Page</source>
+		<source>1. Target-Page</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-		<source>External-Url (if no page selected)</source>
+		<source>or 2. External-Url (if no page selected)</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
 		<source>optional GET-Params</source>
@@ -27,6 +27,9 @@
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_domain.name">
 		<source>Domain</source>
+	    </trans-unit>
+	    <trans-unit id="eval.shortlinkToShort">
+		<source>The Shortlink need 3 Characters or more</source>
 	    </trans-unit>
 	</body>
     </file>
@@ -43,10 +46,10 @@
 		<source>Shortlink</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.page">
-		<source>Zielseite</source>
+		<source>1. Zielseite</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-		<source>oder Externe Url (wenn keine Seite gewählt wurde)</source>
+		<source>oder 2. Externe Url (wenn keine Seite gewählt wurde)</source>
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
 		<source>optionale GET-Parameter</source>
@@ -56,6 +59,9 @@
 	    </trans-unit>
 	    <trans-unit id="tx_meshortlink_domain_model_domain.name">
 		<source>Domain</source>
+	    </trans-unit>
+	    <trans-unit id="eval.shortlinkToShort">
+		<source>Ein Shortlink muss aus mind. 3 Zeichen bestehen</source>
 	    </trans-unit>
 	</body>
     </file>
