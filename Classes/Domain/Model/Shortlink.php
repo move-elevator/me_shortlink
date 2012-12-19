@@ -2,7 +2,9 @@
 
 namespace MoveElevator\MeShortlink\Domain\Model;
 
-class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+class Shortlink extends AbstractEntity {
 
     /**
      * @var string
@@ -29,7 +31,7 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return string $title
      */
     public function getTitle() {
-	return $this->title;
+        return $this->title;
     }
 
     /**
@@ -37,14 +39,14 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return void
      */
     public function setTitle($title) {
-	$this->title = $title;
+        $this->title = $title;
     }
 
     /**
      * @return string $page
      */
     public function getPage() {
-	return $this->page;
+        return $this->page;
     }
 
     /**
@@ -52,19 +54,19 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return void
      */
     public function setPage($page) {
-	$this->page = $page;
+        $this->page = $page;
     }
 
     /**
      * @return string $url
      */
     public function getUrl() {
-	if (strlen($this->url) > 0) {
-	    if (substr($this->url, 0, 4) !== 'http') {
-		return 'http://' . $this->url;
-	    }
-	}
-	return $this->url;
+        if (strlen($this->url) > 0) {
+            if (substr($this->url, 0, 4) !== 'http') {
+                return 'http://' . $this->url;
+            }
+        }
+        return $this->url;
     }
 
     /**
@@ -72,19 +74,19 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return void
      */
     public function setUrl($url) {
-	$this->url = $url;
+        $this->url = $url;
     }
 
     /**
      * @return string $params
      */
     public function getParams() {
-	if (strlen($this->params) > 0) {
-	    if ($this->params{0} !== '&') {
-		return '&' . $this->params;
-	    }
-	}
-	return $this->params;
+        if (strlen($this->params) > 0) {
+            if ($this->params{0} !== '&') {
+                return '&' . $this->params;
+            }
+        }
+        return $this->params;
     }
 
     /**
@@ -92,7 +94,7 @@ class Shortlink extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return void
      */
     public function setParams($params) {
-	$this->params = $params;
+        $this->params = $params;
     }
 
 }

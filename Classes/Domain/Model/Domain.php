@@ -2,7 +2,9 @@
 
 namespace MoveElevator\MeShortlink\Domain\Model;
 
-class Domain extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
+class Domain extends AbstractEntity {
 
     /**
      * @var string
@@ -14,7 +16,7 @@ class Domain extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return string $name
      */
     public function getName() {
-	return $this->name;
+        return $this->name;
     }
 
     /**
@@ -22,7 +24,7 @@ class Domain extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @return void
      */
     public function setName($name) {
-	$this->name = $name;
+        $this->name = $name;
     }
 
 }
