@@ -7,6 +7,11 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility as Typo3GeneralUtility;
 
 class GeneralUtility {
 
+    /**
+     * Check if the url has a valid shortlink part
+     * @param string $url
+     * @return string|false
+     */
     public static function getValidShortlink($url) {
         $parts = preg_split('/(\/)|(\.)/', $url, -1, PREG_SPLIT_NO_EMPTY);
         if (count($parts) > 1) {

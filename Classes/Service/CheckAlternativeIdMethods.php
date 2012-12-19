@@ -5,8 +5,12 @@ namespace MoveElevator\MeShortlink\Service;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Core\Bootstrap;
 
-class CheckAlternativeIdMethods {
+/**
+ * Shortlink Redirect Hook
+ * Calls the ShortlinkController->redirectAction
+ */
 
+class CheckAlternativeIdMethods {
     public function redirect() {
         $configuration = array(
             'extensionName' => 'MeShortlink',
