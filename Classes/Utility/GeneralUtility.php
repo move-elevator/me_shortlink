@@ -45,7 +45,7 @@ class GeneralUtility {
     /**
      * Returns full URL of internal Page with optinal Params
      * @param string $shortlinkParams
-     * @return array
+     * @return string
      */
     public function getInternalUrl($shortLink) {
         if (ExtensionManagementUtility::isLoaded('realurl')) {
@@ -61,9 +61,9 @@ class GeneralUtility {
      * Get Speaking path from RealUrl Extension
      * @param integer $pid
      * @param array $params
-     * @return void
+     * @return array
      */
-    protected function getSpeakingUrlFromRealUrl($pid, $params = array()) {
+    public function getSpeakingUrlFromRealUrl($pid, $params = array()) {
         $GLOBALS['TSFE']->sys_page = Typo3GeneralUtility::makeInstance('t3lib_pageSelect');
         $GLOBALS['TSFE']->tmpl = Typo3GeneralUtility::makeInstance('t3lib_TStemplate');
         $GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
