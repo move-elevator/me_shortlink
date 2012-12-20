@@ -10,6 +10,7 @@ class DomainRepository extends Repository {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $query->matching($query->equals('name', $domain, TRUE));
+        
         return $query->execute();
     }
 

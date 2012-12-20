@@ -10,6 +10,7 @@ class ShortlinkRepository extends Repository {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $query->matching($query->equals('title', $shortlink, TRUE));
+        
         return $query->execute();
     }
 

@@ -37,6 +37,9 @@ class DomainRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->repositoryObject);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Repository\DomainRepository::findByDomainName
+     */
     public function testFindByDomainName() {
         $querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
         $querySettings->setRespectStoragePage(FALSE);

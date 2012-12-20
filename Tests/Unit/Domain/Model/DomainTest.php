@@ -26,6 +26,10 @@ class DomainTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->object);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::setName
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::getName
+     */
     public function testSetNameStringAndGetsSame() {
         $this->object->setName($this->testConfig['name']);
         $this->assertSame($this->object->getName(), $this->testConfig['name']);

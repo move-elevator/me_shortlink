@@ -21,6 +21,9 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     protected $domainRepository;
 
+    /*
+     * @return void
+     */
     public function redirectAction() {
         $requestUri = GeneralUtility::getIndpEnv('REQUEST_URI');
         $httpHost = GeneralUtility::getHostname();
@@ -28,6 +31,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         if ($shortLinkToCheck !== FALSE) {
             $shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
+            
             if ($shortLinks instanceof QueryResult && count($shortLinks) > 0) {
                 $domain = $this->getDomain($httpHost);
                 $this->checkShortLinksDomain($shortLinks, $domain);
@@ -45,6 +49,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             if ($domain && $domain->getPid() != $shortLink->getPid()) {
                 continue;
             }
+            
             $this->redirect($shortLink);
         }
     }
@@ -56,6 +61,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     protected function redirect($shortLink){
         $url = MeUtility::getRedirectUrl($shortLink);
+        
         if (GeneralUtility::isValidUrl($url)) {
             HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);
         }
@@ -69,6 +75,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     protected function getDomain($httpHost){
         $domains = $this->domainRepository->findByName($httpHost);
         $domain = $domains->current();
+        
         return $domain;
     }
 }

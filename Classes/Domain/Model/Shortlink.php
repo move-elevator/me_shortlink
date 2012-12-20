@@ -61,11 +61,11 @@ class Shortlink extends AbstractEntity {
      * @return string $url
      */
     public function getUrl() {
-        if (strlen($this->url) > 0) {
-            if (substr($this->url, 0, 4) !== 'http') {
-                return 'http://' . $this->url;
-            }
+        if (strlen($this->url) > 0 && substr($this->url, 0, 4) !== 'http') {
+
+            return 'http://' . $this->url;
         }
+        
         return $this->url;
     }
 
@@ -78,14 +78,14 @@ class Shortlink extends AbstractEntity {
     }
 
     /**
-     * @return string $params
+     * @return string
      */
     public function getParams() {
-        if (strlen($this->params) > 0) {
-            if ($this->params{0} !== '&') {
-                return '&' . $this->params;
-            }
+        if (strlen($this->params) > 0 && $this->params{0} !== '&') {
+            
+            return '&' . $this->params;
         }
+        
         return $this->params;
     }
 

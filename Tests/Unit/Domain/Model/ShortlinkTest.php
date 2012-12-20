@@ -31,36 +31,64 @@ class ShortlinkTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
         unset($this->object);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setTitle
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getTitle
+     */
     public function testSetTitleStringAndGetsSame() {
         $this->object->setTitle($this->testConfig['title']);
         $this->assertSame($this->object->getTitle(), $this->testConfig['title']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setPage
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getPage
+     */
     public function testSetPageIntAndGetsSame() {
         $this->object->setPage($this->testConfig['page']);
         $this->assertSame($this->object->getPage(), $this->testConfig['page']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setUrl
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getUrl
+     */
     public function testSetUrlWithHttpAndGetsSame() {
         $this->object->setUrl($this->testConfig['urlWithHTTP']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setUrl
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getUrl
+     */
     public function testSetUrlWithHttpsAndGetsSame() {
         $this->object->setUrl($this->testConfig['urlWithHTTPS']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTPS']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setUrl
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getUrl
+     */
     public function testSetUrlWithOutHttpAndGetsWithHttp() {
         $this->object->setUrl($this->testConfig['urlWithOutHTTP']);
         $this->assertSame($this->object->getUrl(), $this->testConfig['urlWithHTTP']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setParams
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getParams
+     */
     public function testSetParamsWithAmpAndGetsSame() {
         $this->object->setParams($this->testConfig['paramsWithAmp']);
         $this->assertSame($this->object->getParams(), $this->testConfig['paramsWithAmp']);
     }
 
+    /**
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::setParams
+     * @covers \MoveElevator\MeShortlink\Domain\Model\Shortlink::getParams
+     */
     public function testSetParamsWithOutAmpAndGetsWithAmp() {
         $this->object->setParams($this->testConfig['paramsWithOutAmp']);
         $this->assertSame($this->object->getParams(), $this->testConfig['paramsWithAmp']);

@@ -22,6 +22,7 @@ class tx_meshortlink_evalfunc {
                 return theVal;
             }
         ";
+        
         return $jsValidator;
     }
 
@@ -32,9 +33,9 @@ class tx_meshortlink_evalfunc {
     public function evaluateFieldValue($value, $is_in, &$set) {
         if (strlen($value) < $this->minLength) {
             return '';
-        } else {
-            return $value;
         }
+        
+        return $value;
     }
 
 }

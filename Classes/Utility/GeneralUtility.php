@@ -14,20 +14,23 @@ class GeneralUtility {
      */
     public static function getValidShortlink($url) {
         $parts = preg_split('/(\/)|(\.)/', $url, -1, PREG_SPLIT_NO_EMPTY);
+        
         if (count($parts) > 1) {
-            return false;
+            return FALSE;
         }
+        
         $lastPart = array_pop($parts);
+        
         if (!preg_match('/^([a-zA-Z0-9-_]{3,30})$/', $lastPart)) {
-            return false;
-        } else {
-            return $lastPart;
-        }
+            return FALSE;
+        } 
+        
+        return $lastPart;
     }
 
     /**
      * Get url from Shortlink
-     * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink
+     * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
      * @return string
      */
     public static function getRedirectUrl($shortLink) {
@@ -39,6 +42,7 @@ class GeneralUtility {
             //syslog
             $url = '';
         }
+        
         return $url;
     }
 
@@ -48,12 +52,16 @@ class GeneralUtility {
      * @return string
      */
     public function getInternalUrl($shortLink) {
+        $shortLinkPage = $shortLink->getPage();
+        $shortLinkParams = $shortLink->getParams();
+        
         if (ExtensionManagementUtility::isLoaded('realurl')) {
-            $realUrlParams = Typo3GeneralUtility::explodeUrl2Array($shortLink->getParams());
-            $url = self::getSpeakingUrlFromRealUrl($shortLink->getPage(), $realUrlParams);
+            $realUrlParams = Typo3GeneralUtility::explodeUrl2Array($shortLinkParams);
+            $url = self::getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
         } else {
-            $url = 'index.php?id=' . $shortLink->getPage() . $shortLink->getParams();
+            $url = 'index.php?id=' . $shortLinkPage . $shortLinkParams;
         }
+        
         return Typo3GeneralUtility::locationHeaderUrl($url);
     }
 
@@ -69,6 +77,7 @@ class GeneralUtility {
         $GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
 
         $pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int) $pid);
+        
         if ($pageRow) {
             $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', Typo3GeneralUtility::implodeArrayForUrl('', $params));
         }
@@ -76,6 +85,7 @@ class GeneralUtility {
         $realUrl = new \tx_realurl();
         $realUrl->encodeSpURL($conf, $this);
         $url = $conf['LD']['totalURL'];
+        
         return $url;
     }
 
