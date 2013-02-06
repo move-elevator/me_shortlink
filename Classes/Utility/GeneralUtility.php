@@ -33,14 +33,11 @@ class GeneralUtility {
      * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
      * @return string
      */
-    public static function getRedirectUrl($shortLink) {
+    public static function getRedirectUrlFromShortlink($shortLink) {
         if (intval($shortLink->getPage()) > 0) {
-            $url = self::getInternalUrl($shortLink);
-        } else if ($shortLink->getUrl()) {
-            $url = $shortLink->getUrl();
+            $url = self::getInternalUrlFromShortlink($shortLink);
         } else {
-            //syslog
-            $url = '';
+            $url = $shortLink->getUrl();
         }
         
         return $url;
@@ -51,7 +48,7 @@ class GeneralUtility {
      * @param string $shortlinkParams
      * @return string
      */
-    public function getInternalUrl($shortLink) {
+    public function getInternalUrlFromShortlink($shortLink) {
         $shortLinkPage = $shortLink->getPage();
         $shortLinkParams = $shortLink->getParams();
         

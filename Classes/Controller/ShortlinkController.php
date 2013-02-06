@@ -60,7 +60,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @return void
      */
     protected function redirect($shortLink){
-        $url = MeUtility::getRedirectUrl($shortLink);
+        $url = MeUtility::getRedirectUrlFromShortlink($shortLink);
         
         if (GeneralUtility::isValidUrl($url)) {
             HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);

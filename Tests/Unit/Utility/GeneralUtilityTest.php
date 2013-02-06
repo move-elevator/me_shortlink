@@ -44,14 +44,14 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
 
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getRedirectUrl
+     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getRedirectUrlFromShortlink
      */
-    public function testGetRedirectUrl() {
+    public function testGetRedirectUrlFromShortlink() {
         $querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
         $querySettings->setRespectStoragePage(FALSE);
         $this->repositoryObject->setDefaultQuerySettings($querySettings);
         $shortLink = $this->repositoryObject->findByUid($this->fixtureShortlinkUid);
-        $redirectUrl = $this->utilityObject->getRedirectUrl($shortLink);
+        $redirectUrl = $this->utilityObject->getRedirectUrlFromShortlink($shortLink);
         $this->assertEquals($redirectUrl, 'http://move-elevator.de');
     }
 
@@ -64,11 +64,11 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
     
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getInternalUrl
+     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getInternalUrlFromShortlink
      */
-    public function testGetInternalUrl(){
+    public function testGetInternalUrlFromShortlink(){
         $shortLink = $this->repositoryObject->findByUid($this->fixtureShortlinkUid);
-        $this->assertStringStartsWith('http', $this->utilityObject->getInternalUrl($shortLink));
+        $this->assertStringStartsWith('http', $this->utilityObject->getInternalUrlFromShortlink($shortLink));
     }
     
     /**
