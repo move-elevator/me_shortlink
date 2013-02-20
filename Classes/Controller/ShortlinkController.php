@@ -30,8 +30,10 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $shortLinkToCheck = MeUtility::getValidShortlink($requestUri);
 
         if ($shortLinkToCheck !== FALSE) {
+            if(!isset($GLOBALS['TCA']['tx_meshortlink_domain_model_shortlink'])){
+                $GLOBALS['TSFE']->includeTCA();
+            }
             $shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
-            
             if ($shortLinks instanceof QueryResult && count($shortLinks) > 0) {
                 $domain = $this->getDomain($httpHost);
                 $this->checkShortLinksDomain($shortLinks, $domain);
