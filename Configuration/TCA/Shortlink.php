@@ -73,7 +73,8 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'pages',
-                'size' => 5,
+                'size' => 1,
+                'maxitems' => 1,
             ),
         ),
         'url' => array(

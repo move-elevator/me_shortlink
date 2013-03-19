@@ -13,14 +13,14 @@ class Shortlink extends AbstractEntity {
     protected $title;
 
     /**
-     * @var string
+     * @var integer
      */
     protected $page;
 
     /**
      * @var string
      */
-    protected $url;
+    protected $url = '';
 
     /**
      * @var string
@@ -43,14 +43,14 @@ class Shortlink extends AbstractEntity {
     }
 
     /**
-     * @return string $page
+     * @return integer $page
      */
     public function getPage() {
         return $this->page;
     }
 
     /**
-     * @param string $page
+     * @param integer $page
      * @return void
      */
     public function setPage($page) {

@@ -3,9 +3,9 @@
 namespace MoveElevator\MeShortlink\Utility;
 
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use \TYPO3\CMS\Core\Utility\GeneralUtility as Typo3GeneralUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class GeneralUtility {
+class ShortlinkUtility {
 
     /**
      * Check if the url has a valid shortlink part
@@ -53,13 +53,13 @@ class GeneralUtility {
         $shortLinkParams = $shortLink->getParams();
         
         if (ExtensionManagementUtility::isLoaded('realurl')) {
-            $realUrlParams = Typo3GeneralUtility::explodeUrl2Array($shortLinkParams);
+            $realUrlParams = GeneralUtility::explodeUrl2Array($shortLinkParams);
             $url = self::getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
         } else {
             $url = 'index.php?id=' . $shortLinkPage . $shortLinkParams;
         }
         
-        return Typo3GeneralUtility::locationHeaderUrl($url);
+        return GeneralUtility::locationHeaderUrl($url);
     }
 
     /**
@@ -69,17 +69,17 @@ class GeneralUtility {
      * @return array
      */
     public function getSpeakingUrlFromRealUrl($pid, $params = array()) {
-        $GLOBALS['TSFE']->sys_page = Typo3GeneralUtility::makeInstance('t3lib_pageSelect');
-        $GLOBALS['TSFE']->tmpl = Typo3GeneralUtility::makeInstance('t3lib_TStemplate');
+        //init page object to get realUrl configuration
+        $GLOBALS['TSFE']->sys_page = GeneralUtility::makeInstance('t3lib_pageSelect');
+        $GLOBALS['TSFE']->tmpl = GeneralUtility::makeInstance('t3lib_TStemplate');
         $GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
 
         $pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int) $pid);
         
         if ($pageRow) {
-            $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', Typo3GeneralUtility::implodeArrayForUrl('', $params));
+            $conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData($pageRow, '', 0, 'index.php', '', GeneralUtility::implodeArrayForUrl('', $params));
         }
-
-        $realUrl = new \tx_realurl();
+        $realUrl = GeneralUtility::makeInstance('tx_realurl');
         $realUrl->encodeSpURL($conf, $this);
         $url = $conf['LD']['totalURL'];
         

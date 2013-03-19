@@ -3,8 +3,9 @@
 namespace MoveElevator\MeShortlink\Controller;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \MoveElevator\MeShortlink\Utility\GeneralUtility as MeUtility;
+use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use \TYPO3\CMS\Core\Utility\HttpUtility;
+
 use \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
 class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
@@ -27,7 +28,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function redirectAction() {
         $requestUri = GeneralUtility::getIndpEnv('REQUEST_URI');
         $httpHost = GeneralUtility::getHostname();
-        $shortLinkToCheck = MeUtility::getValidShortlink($requestUri);
+        $shortLinkToCheck = ShortlinkUtility::getValidShortlink($requestUri);
 
         if ($shortLinkToCheck !== FALSE) {
             if(!isset($GLOBALS['TCA']['tx_meshortlink_domain_model_shortlink'])){
@@ -62,7 +63,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @return void
      */
     protected function redirect($shortLink){
-        $url = MeUtility::getRedirectUrlFromShortlink($shortLink);
+        $url = ShortlinkUtility::getRedirectUrlFromShortlink($shortLink);
         
         if (GeneralUtility::isValidUrl($url)) {
             HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);

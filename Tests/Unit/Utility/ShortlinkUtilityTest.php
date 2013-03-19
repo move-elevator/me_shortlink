@@ -8,7 +8,7 @@ namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
  * @package me_shortlink
  * @subpackage Tests
  */
-class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+class ShortlinkUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
     /**
      * @var \Tx_Phpunit_Framework
@@ -21,14 +21,14 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     protected $repositoryObject;
     
     /**
-     * @var  \MoveElevator\MeShortlink\Utility\GeneralUtility
+     * @var  \MoveElevator\MeShortlink\Utility\ShortlinkUtility
      */
     protected $utilityObject;
 
     public function setUp() {
         $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
         $this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\ShortlinkRepository');
-        $this->utilityObject = $this->objectManager->get('MoveElevator\\MeShortlink\\Utility\\GeneralUtility');
+        $this->utilityObject = $this->objectManager->get('MoveElevator\\MeShortlink\\Utility\\ShortlinkUtility');
         $this->fixtureShortlinkUid = $this->testingFramework->createRecord(
                 'tx_meshortlink_domain_model_shortlink', array(
                     'title' => 'fooo',
@@ -44,7 +44,7 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
 
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getRedirectUrlFromShortlink
+     * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getRedirectUrlFromShortlink
      */
     public function testGetRedirectUrlFromShortlink() {
         $querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
@@ -56,7 +56,7 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
 
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getValidShortlink
+     * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getValidShortlink
      */
     public function testGetValidShortlink() {
         $this->assertFalse($this->utilityObject->getValidShortlink('*foo-bar_batz23.html'));
@@ -64,7 +64,7 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
     
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getInternalUrlFromShortlink
+     * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getInternalUrlFromShortlink
      */
     public function testGetInternalUrlFromShortlink(){
         $shortLink = $this->repositoryObject->findByUid($this->fixtureShortlinkUid);
@@ -72,10 +72,11 @@ class GeneralUtilityTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
     }
     
     /**
-     * @covers \MoveElevator\MeShortlink\Utility\GeneralUtility::getSpeakingUrlFromRealUrl
+     * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getSpeakingUrlFromRealUrl
      */
     public function testGetSpeakingUrlFromRealUrl(){
-        $this->markTestIncomplete('must be written!');
+        $this->markTestIncomplete('just check against PageId 1!');
+        $this->assertSame('', $this->utilityObject->getSpeakingUrlFromRealUrl(1));
     }
 
 }

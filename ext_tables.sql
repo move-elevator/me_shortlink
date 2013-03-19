@@ -5,7 +5,7 @@ CREATE TABLE tx_meshortlink_domain_model_shortlink (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
-	page text NOT NULL,
+	page int(11) DEFAULT '0' NOT NULL,
 	url varchar(255) DEFAULT '' NOT NULL,
 	params varchar(255) DEFAULT '' NOT NULL,
 	is_dummy_record tinyint(4) unsigned DEFAULT '0' NOT NULL,
