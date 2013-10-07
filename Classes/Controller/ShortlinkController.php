@@ -76,6 +76,11 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @return string $domain
      */
     protected function getDomain($httpHost){
+        $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+        $querySettings->setIgnoreEnableFields(TRUE);
+        $querySettings->setRespectStoragePage(FALSE);
+        $this->domainRepository->setDefaultQuerySettings($querySettings);
+
         $domains = $this->domainRepository->findByName($httpHost);
         $domain = $domains->current();
         
