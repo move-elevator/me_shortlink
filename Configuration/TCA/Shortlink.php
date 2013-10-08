@@ -62,7 +62,7 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'tx_meshortlink_evalfunc,trim,required,alphanum_x,nospace',
+                'eval' => 'tx_meshortlink_eval,trim,required,alphanum_x,nospace',
                 'max' => 30,
             ),
         ),

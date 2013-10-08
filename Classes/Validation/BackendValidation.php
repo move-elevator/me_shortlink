@@ -4,7 +4,7 @@
  * TCA Evalfunc for minimun length of shortlink
  */
 
-class tx_meshortlink_evalfunc {
+class tx_meshortlink_eval {
     protected $minLength = 3;
     
     /**

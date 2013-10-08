@@ -1,5 +1,0 @@
-Installationshinweise:
-- Extension installieren
-- Shortlinks und Domains können auf jeder beliebigen Seite angelegt werden und greifen sofort
-- sollte ein Shortlink und eine Shortlink-Domain auf der gleichen Seite liegen,
-  wird der Redirect nur durchgeführt, wenn die Domain der aufgerufenen Seite identisch mit der Shortlink-Domain ist

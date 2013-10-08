@@ -1,2 +1,0 @@
-Features:
-- Aufrufstatistik als BE-Modul

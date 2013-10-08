@@ -4,6 +4,11 @@ namespace MoveElevator\MeShortlink\Domain\Model;
 
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
+/**
+ * Class Shortlink
+ *
+ * @package MoveElevator\MeShortlink\Domain\Model
+ */
 class Shortlink extends AbstractEntity {
 
     /**
@@ -65,7 +70,7 @@ class Shortlink extends AbstractEntity {
 
             return 'http://' . $this->url;
         }
-        
+
         return $this->url;
     }
 
@@ -82,10 +87,10 @@ class Shortlink extends AbstractEntity {
      */
     public function getParams() {
         if (strlen($this->params) > 0 && $this->params{0} !== '&') {
-            
+
             return '&' . $this->params;
         }
-        
+
         return $this->params;
     }
 

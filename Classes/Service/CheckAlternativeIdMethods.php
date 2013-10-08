@@ -9,7 +9,6 @@ use \TYPO3\CMS\Extbase\Core\Bootstrap;
  * Shortlink Redirect Hook
  * Calls the ShortlinkController->redirectAction
  */
-
 class CheckAlternativeIdMethods {
     public function redirect() {
         $configuration = array(
@@ -27,7 +26,7 @@ class CheckAlternativeIdMethods {
         );
         $GLOBALS['TSFE']->sys_page = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
         $bootstrap = new Bootstrap();
-        
+
         $bootstrap->run('', $configuration);
     }
 

@@ -4,6 +4,11 @@ namespace MoveElevator\MeShortlink\Domain\Model;
 
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
+/**
+ * Class Domain
+ *
+ * @package MoveElevator\MeShortlink\Domain\Model
+ */
 class Domain extends AbstractEntity {
 
     /**
