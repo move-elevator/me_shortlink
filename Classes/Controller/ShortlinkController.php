@@ -2,12 +2,18 @@
 
 namespace MoveElevator\MeShortlink\Controller;
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility,
+    \TYPO3\CMS\Core\Utility\HttpUtility;
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
-use \TYPO3\CMS\Core\Utility\HttpUtility;
+
 
 use \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
+/**
+ * Class ShortlinkController
+ *
+ * @package MoveElevator\MeShortlink\Controller
+ */
 class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
     /**
