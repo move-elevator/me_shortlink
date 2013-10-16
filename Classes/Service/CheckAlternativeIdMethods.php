@@ -10,6 +10,9 @@ use \TYPO3\CMS\Extbase\Core\Bootstrap;
  * Calls the ShortlinkController->redirectAction
  */
 class CheckAlternativeIdMethods {
+    /**
+     *  Redirect to ShortlinkController->redirectAction() and intialize sys_page by preBeUser Hook
+     */
     public function redirect() {
         $configuration = array(
             'extensionName' => 'MeShortlink',

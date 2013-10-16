@@ -49,7 +49,7 @@ class ShortlinkRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase
         $querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
         $querySettings->setRespectStoragePage(FALSE);
         $this->repositoryObject->setDefaultQuerySettings($querySettings);
-        $shortlinkObject = $this->repositoryObject->findByRequest($this->testConfig['title'])->current();
+        $shortlinkObject = $this->repositoryObject->findByShortlinkString($this->testConfig['title'])->current();
         $this->assertEquals($shortlinkObject->getTitle(), $this->testConfig['title']);
     }
 

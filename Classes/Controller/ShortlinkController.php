@@ -4,6 +4,7 @@ namespace MoveElevator\MeShortlink\Controller;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility,
     \TYPO3\CMS\Core\Utility\HttpUtility;
+use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 
 
@@ -14,7 +15,7 @@ use \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
  *
  * @package MoveElevator\MeShortlink\Controller
  */
-class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class ShortlinkController extends ActionController {
 
     /**
      * @var \MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository
@@ -40,7 +41,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             if (!isset($GLOBALS['TCA']['tx_meshortlink_domain_model_shortlink'])) {
                 $GLOBALS['TSFE']->includeTCA();
             }
-            $shortLinks = $this->shortlinkRepository->findByRequest($shortLinkToCheck);
+            $shortLinks = $this->shortlinkRepository->findByShortlinkString($shortLinkToCheck);
             if ($shortLinks instanceof QueryResult && count($shortLinks) > 0) {
                 $domain = $this->getDomain($httpHost);
                 $this->checkShortLinksDomain($shortLinks, $domain);
@@ -56,7 +57,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     protected function checkShortLinksDomain(QueryResult $shortLinks, $domain = NULL) {
         foreach ($shortLinks as $shortLink) {
-            if ($domain && $domain->getPid() != $shortLink->getPid()) {
+            if (!is_null($domain) && $domain->getPid() !== $shortLink->getPid()) {
                 continue;
             }
 
@@ -73,7 +74,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     protected function redirect($shortLink) {
         $url = ShortlinkUtility::getRedirectUrlFromShortlink($shortLink);
 
-        if (GeneralUtility::isValidUrl($url)) {
+        if (GeneralUtility::isValidUrl($url) === TRUE) {
             HttpUtility::redirect($url, HttpUtility::HTTP_STATUS_301);
         }
     }
@@ -85,12 +86,7 @@ class ShortlinkController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * @return string $domain
      */
     protected function getDomain($httpHost) {
-        $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
-        $querySettings->setIgnoreEnableFields(TRUE);
-        $querySettings->setRespectStoragePage(FALSE);
-        $this->domainRepository->setDefaultQuerySettings($querySettings);
-
-        $domains = $this->domainRepository->findByName($httpHost);
+        $domains = $this->domainRepository->findByDomainName($httpHost);
         $domain = $domains->current();
 
         return $domain;

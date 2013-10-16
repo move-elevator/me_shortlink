@@ -11,7 +11,11 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ShortlinkRepository extends Repository {
 
-    public function findByRequest($shortlink) {
+    /**
+     * @param string $shortlink
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByShortlinkString($shortlink) {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $query->matching($query->equals('title', $shortlink, TRUE));
