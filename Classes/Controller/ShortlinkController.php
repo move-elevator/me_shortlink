@@ -55,9 +55,9 @@ class ShortlinkController extends ActionController {
      * @param \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $shortLinks
      * @param \MoveElevator\MeShortlink\Domain\Model\Domain $domain|NULL
      */
-    protected function checkShortLinksDomain(QueryResult $shortLinks, $domain = NULL) {
+    protected function checkShortLinksDomain(QueryResult $shortLinks, $domain = FALSE) {
         foreach ($shortLinks as $shortLink) {
-            if (!is_null($domain) && $domain->getPid() !== $shortLink->getPid()) {
+            if ($domain instanceof Domain && $domain->getPid() !== $shortLink->getPid()) {
                 continue;
             }
 
