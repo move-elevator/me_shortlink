@@ -2,54 +2,72 @@
 
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Repository;
 
-class DomainRepositoryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
 
-    /**
-     * @var \Tx_Phpunit_Framework
-     */
-    protected $testingFramework;
 
-    /**
-     * @var  \MoveElevator\MeShortlink\Domain\Repository\DomainRepository
-     */
-    protected $repositoryObject;
+/**
+ * Class DomainRepositoryTest
+ *
+ * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Repository
+ */
+class DomainRepositoryTest extends BaseTestCase {
 
-    /*
-     * @var array
-     */
-    protected $testConfig;
+	/**
+	 * @var \Tx_Phpunit_Framework
+	 */
+	protected $testingFramework;
 
-    public function setUp() {
-        $this->testConfig = array(
-            'domain' => 'www.move-elevator.de'
-        );
+	/**
+	 * @var  \MoveElevator\MeShortlink\Domain\Repository\DomainRepository
+	 */
+	protected $repositoryObject;
 
-        $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
-        $this->repositoryObject = $this->objectManager->get('\\MoveElevator\\MeShortlink\\Domain\\Repository\\DomainRepository');
-        $this->testingFramework->createRecord(
-                'tx_meshortlink_domain_model_domain', array('name' => $this->testConfig['domain'])
-        );
-    }
+	/*
+	 * @var array
+	 */
+	protected $testConfig;
 
-    public function tearDown() {
-        $this->testingFramework->cleanUp();
-        unset($this->testingFramework);
-        unset($this->repositoryObject);
-    }
+	/**
+	 * @return void
+	 */
+	public function setUp() {
+		$this->testConfig = array(
+			'domain' => 'www.move-elevator.de'
+		);
 
-    /**
-     * @covers \MoveElevator\MeShortlink\Domain\Repository\DomainRepository::findByDomainName
-     */
-    public function testFindByDomainName() {
-        $querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
-        $querySettings->setRespectStoragePage(FALSE);
-        $this->repositoryObject->setDefaultQuerySettings($querySettings);
-        /*
-         * @var \MoveElevator\MeShortlink\Domain\Model\Domain
-         */
-        $domainObject = $this->repositoryObject->findByDomainName($this->testConfig['domain'])->current();
-        $this->assertEquals($domainObject->getName(), $this->testConfig['domain']);
-    }
+		$this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
+		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+		$this->repositoryObject = $objectManager->get('MoveElevator\MeShortlink\Domain\Repository\DomainRepository');
+		$this->testingFramework->createRecord(
+			'tx_meshortlink_domain_model_domain', array('name' => $this->testConfig['domain'])
+		);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function tearDown() {
+		$this->testingFramework->cleanUp();
+		unset($this->testingFramework);
+		unset($this->repositoryObject);
+	}
+
+	/**
+	 * @covers \MoveElevator\MeShortlink\Domain\Repository\DomainRepository::findByDomainName
+	 * @return void
+	 */
+	public function testFindByDomainName() {
+		$querySettings = new \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings();
+		$querySettings->setRespectStoragePage(FALSE);
+		$this->repositoryObject->setDefaultQuerySettings($querySettings);
+		/*
+		 * @var \MoveElevator\MeShortlink\Domain\Model\Domain
+		 */
+		$domainObject = $this->repositoryObject->findByDomainName($this->testConfig['domain'])->current();
+		$this->assertEquals($domainObject->getName(), $this->testConfig['domain']);
+	}
 
 }
 

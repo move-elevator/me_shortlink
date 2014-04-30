@@ -11,17 +11,23 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ShortlinkRepository extends Repository {
 
-    /**
-     * @param string $shortlink
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     */
-    public function findByShortlinkString($shortlink) {
-        $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(FALSE);
-        $query->matching($query->equals('title', $shortlink, TRUE));
+	/**
+	 * @var string
+	 */
+	protected $objectType = 'MoveElevator\MeShortlink\Domain\Shortlink';
 
-        return $query->execute();
-    }
+	/**
+	 * @param string $shortlink
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByShortlinkString($shortlink) {
+
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$query->matching($query->equals('title', $shortlink, TRUE));
+
+		return $query->execute();
+	}
 
 }
 

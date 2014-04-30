@@ -2,38 +2,53 @@
 
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Model;
 
-class DomainTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+use \MoveElevator\MeShortlink\Domain\Model\Domain;
+use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
 
-    /**
-     * @var \MoveElevator\MeShortlink\Domain\Model\Domain
-     */
-    protected $object;
+/**
+ * Class DomainTest
+ *
+ * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Model
+ */
+class DomainTest extends BaseTestCase {
 
-    /*
-     * @var array
-     */
-    protected $testConfig;
+	/**
+	 * @var \MoveElevator\MeShortlink\Domain\Model\Domain
+	 */
+	protected $object;
 
-    public function setUp() {
-        $this->object = new \MoveElevator\MeShortlink\Domain\Model\Domain();
+	/*
+	 * @var array
+	 */
+	protected $testConfig;
 
-        $this->testConfig = array(
-            'name' => 'www.move-elevator.de',
-        );
-    }
+	/**
+	 * @return void
+	 */
+	public function setUp() {
+		$this->object = new Domain();
 
-    public function tearDown() {
-        unset($this->object);
-    }
+		$this->testConfig = array(
+			'name' => 'www.move-elevator.de',
+		);
+	}
 
-    /**
-     * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::setName
-     * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::getName
-     */
-    public function testSetNameStringAndGetsSame() {
-        $this->object->setName($this->testConfig['name']);
-        $this->assertSame($this->object->getName(), $this->testConfig['name']);
-    }
+	/**
+	 * @return void
+	 */
+	public function tearDown() {
+		unset($this->object);
+	}
+
+	/**
+	 * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::setName
+	 * @covers \MoveElevator\MeShortlink\Domain\Model\Domain::getName
+	 * @return void
+	 */
+	public function testSetNameStringAndGetsSame() {
+		$this->object->setName($this->testConfig['name']);
+		$this->assertSame($this->object->getName(), $this->testConfig['name']);
+	}
 
 }
 

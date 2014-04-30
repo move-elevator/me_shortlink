@@ -5,21 +5,21 @@
  */
 class tx_meshortlink_eval {
 
-    /**
-     * minlength of a shortlink
-     *
-     * @var integer
-     */
-    protected $minLength = 3;
+	/**
+	 * minlength of a shortlink
+	 *
+	 * @var integer
+	 */
+	protected $minLength = 3;
 
-    /**
-     * return JS function to validate shortlink length
-     *
-     * @return string
-     */
-    public function returnFieldJS() {
-        $errorMsg = $GLOBALS['LANG']->sL('LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:eval.shortlinkToShort');
-        $jsValidator = "
+	/**
+	 * return JS function to validate shortlink length
+	 *
+	 * @return string
+	 */
+	public function returnFieldJS() {
+		$errorMsg = $GLOBALS['LANG']->sL('LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:eval.shortlinkToShort');
+		$jsValidator = "
             var theVal = ''+value;
             if(theVal.length < " . $this->minLength . "){
                 alert('" . $errorMsg . "');
@@ -29,21 +29,24 @@ class tx_meshortlink_eval {
             }
         ";
 
-        return $jsValidator;
-    }
+		return $jsValidator;
+	}
 
-    /**
-     * serverside function to validate shortlink length
-     *
-     * @return string
-     */
-    public function evaluateFieldValue($value, $is_in, &$set) {
-        if (strlen($value) < $this->minLength) {
-            return '';
-        }
+	/**
+	 * serverside function to validate shortlink length
+	 *
+	 * @param string $value
+	 * @param mixed $is_in
+	 * @param mixed $set
+	 * @return string
+	 */
+	public function evaluateFieldValue($value, $is_in, &$set) {
+		if (strlen($value) < $this->minLength) {
+			return '';
+		}
 
-        return $value;
-    }
+		return $value;
+	}
 
 }
 
