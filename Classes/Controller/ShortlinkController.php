@@ -73,6 +73,7 @@ class ShortlinkController extends ActionController {
 	 * @return void
 	 */
 	protected function redirect($shortLink) {
+		$this->trackAnalytics();
 		$url = ShortlinkUtility::getRedirectUrlFromShortlink($shortLink);
 
 		if (GeneralUtility::isValidUrl($url) === TRUE) {
@@ -92,6 +93,20 @@ class ShortlinkController extends ActionController {
 
 		return $domain;
 	}
-}
 
-?>
+	/**
+	 * track google analytics pageview if config is enable
+	 *
+	 * @return void
+	 */
+	protected function trackAnalytics() {
+		/* @var $generalUtility \MoveElevator\MeLibrary\Utility\GeneralUtility */
+		$configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['me_shortlink']);
+		if (isset($configuration['googleAnalyticsSettings.']) && is_array($configuration['googleAnalyticsSettings.'])) {
+			/* @var $trackingService \MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking */
+			$trackingService = $this->objectManager->get('MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking', $configuration['googleAnalyticsSettings.']);
+			$trackingService->trackPageView();
+		}
+
+	}
+}

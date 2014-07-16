@@ -1,0 +1,8 @@
+googleAnalyticsSettings {
+ 	# cat=basic; type=boolean; label=Shortlinks mit Google Analytics nachverfolgen
+	trackingEnabled = 0
+
+	# cat=basic; type=string; label=Tracking-ID
+	trackingId = UA-XXXX-Y
+
+}
