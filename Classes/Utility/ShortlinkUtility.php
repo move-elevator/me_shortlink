@@ -80,6 +80,7 @@ class ShortlinkUtility {
 		$GLOBALS['TSFE'] = new \stdClass();
 		$GLOBALS['TSFE']->sys_page = $objectManager->get('TYPO3\CMS\Frontend\Page\PageRepository');
 		$GLOBALS['TSFE']->tmpl = $objectManager->get('TYPO3\CMS\Core\TypoScript\TemplateService');
+		$GLOBALS['TSFE']->csConvObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Charset\\CharsetConverter');
 		$GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
 
 		$pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int)$pid);
@@ -92,7 +93,7 @@ class ShortlinkUtility {
 		$realUrl = GeneralUtility::makeInstance('tx_realurl');
 		$realUrl->encodeSpURL($conf, $this);
 		$url = $conf['LD']['totalURL'];
-
+		unset($GLOBALS['TSFE']);
 		return $url;
 	}
 
