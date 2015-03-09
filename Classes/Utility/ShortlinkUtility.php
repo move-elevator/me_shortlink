@@ -92,7 +92,12 @@ class ShortlinkUtility {
 		}
 		$realUrl = GeneralUtility::makeInstance('tx_realurl');
 		$realUrl->encodeSpURL($conf, $this);
+
 		$url = $conf['LD']['totalURL'];
+		if($url === ''){
+			$url = $conf['LD']['url'];
+		}
+
 		unset($GLOBALS['TSFE']);
 		return $url;
 	}
