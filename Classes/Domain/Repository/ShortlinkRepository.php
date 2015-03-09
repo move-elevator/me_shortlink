@@ -30,5 +30,3 @@ class ShortlinkRepository extends Repository {
 	}
 
 }
-
-?>
