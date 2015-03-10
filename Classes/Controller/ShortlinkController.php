@@ -3,8 +3,9 @@
 namespace MoveElevator\MeShortlink\Controller;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use	\TYPO3\CMS\Core\Utility\HttpUtility;
+use \TYPO3\CMS\Core\Utility\HttpUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use \MoveElevator\MeShortlink\Domain\Model\Domain;
 use \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
