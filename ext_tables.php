@@ -52,4 +52,3 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 if (version_compare(TYPO3_branch, '6.1', '<')) {
 	\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tx_meshortlink_domain_model_domain');
 }
-?>

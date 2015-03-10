@@ -8,6 +8,8 @@ use \TYPO3\CMS\Extbase\Core\Bootstrap;
 /**
  * Shortlink Redirect Hook
  * Calls the ShortlinkController->redirectAction
+ *
+ * @package MoveElevator\MeShortlink\Service
  */
 class CheckAlternativeIdMethods {
 
@@ -34,11 +36,9 @@ class CheckAlternativeIdMethods {
 		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
 		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 		$GLOBALS['TSFE']->sys_page = $objectManager->get('TYPO3\CMS\Frontend\Page\PageRepository');
-		$bootstrap = new Bootstrap();
+		$bootstrap = $objectManager->get('TYPO3\CMS\Extbase\Core\Bootstrap');
 
 		$bootstrap->run('', $configuration);
 	}
 
 }
-
-?>

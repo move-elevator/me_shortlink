@@ -52,15 +52,15 @@ class GoogleAnalyticsTracking {
 			$fieldsRequestData .= $key . '=' . $value . '&';
 			rtrim($fieldsRequestData, '&');
 		}
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-		curl_setopt($ch, CURLOPT_URL, self::GOOGLE_ANALYTICS_HOSTNAME);
-		curl_setopt($ch, CURLOPT_POST, count($this->trackingFields));
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $fieldsRequestData);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$result = curl_exec($ch);
+		$curlSession = curl_init();
+		curl_setopt($curlSession, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		curl_setopt($curlSession, CURLOPT_URL, self::GOOGLE_ANALYTICS_HOSTNAME);
+		curl_setopt($curlSession, CURLOPT_POST, count($this->trackingFields));
+		curl_setopt($curlSession, CURLOPT_POSTFIELDS, $fieldsRequestData);
+		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, 1);
+		$result = curl_exec($curlSession);
 
-		curl_close($ch);
+		curl_close($curlSession);
 
 		return $result;
 	}
