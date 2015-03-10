@@ -90,15 +90,22 @@ class ShortlinkUtility {
 				$pageRow, '', 0, 'index.php', '', GeneralUtility::implodeArrayForUrl('', $params)
 			);
 		}
+
+		/** @var \tx_realurl $realUrl */
 		$realUrl = GeneralUtility::makeInstance('tx_realurl');
 		$realUrl->encodeSpURL($conf, $this);
 
-		$url = $conf['LD']['totalURL'];
-		if($url === ''){
-			$url = $conf['LD']['url'];
+		$url = 'index.php?id=' . $pid;
+
+		if(is_array($conf) && isset($conf['LD'])) {
+			$url = $conf['LD']['totalURL'];
+			if ($url === '') {
+				$url = $conf['LD']['url'];
+			}
 		}
 
 		unset($GLOBALS['TSFE']);
+
 		return $url;
 	}
 
