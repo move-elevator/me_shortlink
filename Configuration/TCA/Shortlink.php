@@ -97,4 +97,3 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 		),
 	),
 );
-?>

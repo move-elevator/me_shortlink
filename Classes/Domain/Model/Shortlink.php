@@ -101,5 +101,3 @@ class Shortlink extends AbstractEntity {
 	}
 
 }
-
-?>

@@ -25,4 +25,3 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
 	);
 	$TYPO3_CONF_VARS['SC_OPTIONS']['tce']['formevals']['tx_meshortlink_eval'] = 'EXT:me_shortlink/Classes/Validation/BackendValidation.php';
 }
-?>

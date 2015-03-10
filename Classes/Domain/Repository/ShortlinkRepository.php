@@ -18,7 +18,7 @@ class ShortlinkRepository extends Repository {
 
 	/**
 	 * @param string $shortlink
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByShortlinkString($shortlink) {
 
@@ -30,5 +30,3 @@ class ShortlinkRepository extends Repository {
 	}
 
 }
-
-?>

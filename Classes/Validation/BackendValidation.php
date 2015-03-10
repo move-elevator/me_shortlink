@@ -1,12 +1,12 @@
 <?php
 
 /**
- * TCA Evalfunc for minimun length of shortlink
+ * TCA eval-function for minimum length of shortlink
  */
 class tx_meshortlink_eval {
 
 	/**
-	 * minlength of a shortlink
+	 * min-length of a shortlink
 	 *
 	 * @var integer
 	 */
@@ -33,14 +33,12 @@ class tx_meshortlink_eval {
 	}
 
 	/**
-	 * serverside function to validate shortlink length
+	 * server-side function to validate shortlink length
 	 *
 	 * @param string $value
-	 * @param mixed $is_in
-	 * @param mixed $set
 	 * @return string
 	 */
-	public function evaluateFieldValue($value, $is_in, &$set) {
+	public function evaluateFieldValue($value) {
 		if (strlen($value) < $this->minLength) {
 			return '';
 		}
@@ -49,5 +47,3 @@ class tx_meshortlink_eval {
 	}
 
 }
-
-?>
