@@ -55,13 +55,13 @@ class ShortlinkUtility {
 	 * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
 	 * @return string
 	 */
-	public function getInternalUrlFromShortlink(Shortlink $shortLink) {
+	public static function getInternalUrlFromShortlink(Shortlink $shortLink) {
 		$shortLinkPage = $shortLink->getPage();
 		$shortLinkParams = $shortLink->getParams();
 
 		if (ExtensionManagementUtility::isLoaded('realurl')) {
 			$realUrlParams = GeneralUtility::explodeUrl2Array($shortLinkParams);
-			$url = $this->getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
+			$url = self::getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
 		} else {
 			$url = 'index.php?id=' . $shortLinkPage . $shortLinkParams;
 		}
@@ -75,7 +75,7 @@ class ShortlinkUtility {
 	 * @param array $params
 	 * @return array
 	 */
-	public function getSpeakingUrlFromRealUrl($pid, $params = array()) {
+	public static function getSpeakingUrlFromRealUrl($pid, $params = array()) {
 		//init page object to get realUrl configuration
 		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 		$GLOBALS['TSFE'] = new \stdClass();
@@ -91,10 +91,12 @@ class ShortlinkUtility {
 				$pageRow, '', 0, 'index.php', '', GeneralUtility::implodeArrayForUrl('', $params)
 			);
 		}
+		/** @var \tx_realurl $realUrl */
 		$realUrl = GeneralUtility::makeInstance('tx_realurl');
-		$realUrl->encodeSpURL($conf, $this);
+		$realUrl->encodeSpURL($conf);
 		$url = $conf['LD']['totalURL'];
 		unset($GLOBALS['TSFE']);
+		
 		return $url;
 	}
 
