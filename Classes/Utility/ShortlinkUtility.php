@@ -9,6 +9,8 @@ use \MoveElevator\MeShortlink\Domain\Model\Shortlink;
 
 /**
  * Class ShortlinkUtility
+ *
+ * @package MoveElevator\MeShortlink\Utility
  */
 class ShortlinkUtility {
 
