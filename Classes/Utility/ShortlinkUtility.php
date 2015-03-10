@@ -61,7 +61,7 @@ class ShortlinkUtility {
 
 		if (ExtensionManagementUtility::isLoaded('realurl')) {
 			$realUrlParams = GeneralUtility::explodeUrl2Array($shortLinkParams);
-			$url = self::getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
+			$url = $this->getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
 		} else {
 			$url = 'index.php?id=' . $shortLinkPage . $shortLinkParams;
 		}
