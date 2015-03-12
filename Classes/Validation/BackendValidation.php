@@ -18,16 +18,18 @@ class tx_meshortlink_eval {
 	 * @return string
 	 */
 	public function returnFieldJS() {
-		$errorMsg = $GLOBALS['LANG']->sL('LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:eval.shortlinkToShort');
+		$errorMsg = $GLOBALS['LANG']->sL(
+			'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:eval.shortlinkToShort'
+		);
 		$jsValidator = "
-            var theVal = ''+value;
-            if(theVal.length < " . $this->minLength . "){
-                alert('" . $errorMsg . "');
-                return false;
-            } else {
-                return theVal;
-            }
-        ";
+			var theVal = ''+value;
+			if(theVal.length < " . $this->minLength . "){
+				alert('" . $errorMsg . "');
+				return false;
+			} else {
+				return theVal;
+			}
+		";
 
 		return $jsValidator;
 	}

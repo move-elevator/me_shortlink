@@ -29,7 +29,8 @@ class CheckAlternativeIdMethods {
 			'settings' => array(),
 			'mvc' => array(
 				'requestHandlers' => array(
-					'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler' => 'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler'
+					'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler' =>
+						'TYPO3\CMS\Extbase\Mvc\Web\FrontendRequestHandler'
 				)
 			),
 		);

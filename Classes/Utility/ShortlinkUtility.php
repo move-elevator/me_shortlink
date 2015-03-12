@@ -16,6 +16,7 @@ class ShortlinkUtility {
 
 	/**
 	 * Check if the url has a valid shortlink part
+	 *
 	 * @param string $url
 	 * @return string|false
 	 */
@@ -37,6 +38,7 @@ class ShortlinkUtility {
 
 	/**
 	 * Get url from Shortlink
+	 *
 	 * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
 	 * @return string
 	 */
@@ -52,6 +54,7 @@ class ShortlinkUtility {
 
 	/**
 	 * Returns full URL of internal Page with optinal Params
+	 *
 	 * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
 	 * @return string
 	 */
@@ -71,6 +74,7 @@ class ShortlinkUtility {
 
 	/**
 	 * Get Speaking path from RealUrl Extension
+	 *
 	 * @param integer $pid
 	 * @param array $params
 	 * @return array
@@ -98,7 +102,7 @@ class ShortlinkUtility {
 
 		$url = 'index.php?id=' . $pid;
 
-		if(is_array($conf) && isset($conf['LD'])) {
+		if (is_array($conf) && isset($conf['LD'])) {
 			$url = $conf['LD']['totalURL'];
 			if ($url === '') {
 				$url = $conf['LD']['url'];

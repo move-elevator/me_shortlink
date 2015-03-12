@@ -104,7 +104,10 @@ class ShortlinkController extends ActionController {
 		$configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['me_shortlink']);
 		if (isset($configuration['googleAnalyticsSettings.']) && is_array($configuration['googleAnalyticsSettings.'])) {
 			/* @var $trackingService \MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking */
-			$trackingService = $this->objectManager->get('MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking', $configuration['googleAnalyticsSettings.']);
+			$trackingService = $this->objectManager->get(
+				'MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking',
+				$configuration['googleAnalyticsSettings.']
+			);
 			$trackingService->trackPageView();
 		}
 

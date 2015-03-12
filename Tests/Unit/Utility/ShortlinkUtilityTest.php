@@ -37,7 +37,9 @@ class ShortlinkUtilityTest extends BaseTestCase {
 	public function setUp() {
 		$this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
 		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->repositoryObject = $this->objectManager->get('MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository');
+		$this->repositoryObject = $this->objectManager->get(
+			'MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository'
+		);
 		$this->utilityObject = new ShortlinkUtility();
 		$this->fixtureShortlinkUid = $this->testingFramework->createRecord(
 			'tx_meshortlink_domain_model_shortlink', array(

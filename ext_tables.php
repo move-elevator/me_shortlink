@@ -19,8 +19,10 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'title,page,url,params,',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Shortlink.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)
+			. 'Configuration/TCA/Shortlink.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)
+			. 'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png'
 	),
 );
 
@@ -44,8 +46,10 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'name,',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Domain.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_meshortlink_domain_model_domain.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)
+			. 'Configuration/TCA/Domain.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)
+			. 'Resources/Public/Icons/tx_meshortlink_domain_model_domain.png'
 	),
 );
 
