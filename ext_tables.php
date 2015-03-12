@@ -20,8 +20,7 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 		),
 		'searchFields' => 'title,page,url,params,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Shortlink.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY)
-			. 'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png'
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png'
 	),
 );
 
