@@ -60,8 +60,7 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 		'name' => array(
 			'exclude' => 0,
 			'label' =>
-				'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf'
-				. ':tx_meshortlink_domain_model_domain.name',
+				'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_domain.name',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
