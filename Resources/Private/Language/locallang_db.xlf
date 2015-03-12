@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z"
-          product-name="me_shortlink">
-        <header/>
-        <body>
-            <trans-unit id="me_shortlink">
-                <source>m:e Shortlink</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_shortlink">
-                <source>Shortlink</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_shortlink.title">
-                <source>Shortlink</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_shortlink.page">
-                <source>1. Target-Page</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_shortlink.url">
-                <source>or 2. External-Url (if no page selected)</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_shortlink.params">
-                <source>optional GET-Params</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_domain">
-                <source>Shortlink-Domain</source>
-            </trans-unit>
-            <trans-unit id="tx_meshortlink_domain_model_domain.name">
-                <source>Domain</source>
-            </trans-unit>
-            <trans-unit id="eval.shortlinkToShort">
-                <source>The Shortlink need 3 Characters or more</source>
-            </trans-unit>
-        </body>
-    </file>
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-10-59T13:26:59Z"
+		  product-name="me_shortlink">
+		<header/>
+		<body>
+			<trans-unit id="me_shortlink">
+				<source>m:e Shortlink</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_shortlink">
+				<source>Shortlink</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_shortlink.title">
+				<source>Shortlink</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_shortlink.page">
+				<source>1. Target-Page</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_shortlink.url">
+				<source>or 2. External-Url (if no page selected)</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_shortlink.params">
+				<source>optional GET-Params</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_domain">
+				<source>Shortlink-Domain</source>
+			</trans-unit>
+			<trans-unit id="tx_meshortlink_domain_model_domain.name">
+				<source>Domain</source>
+			</trans-unit>
+			<trans-unit id="eval.shortlinkToShort">
+				<source>The Shortlink need 3 Characters or more</source>
+			</trans-unit>
+		</body>
+	</file>
 </xliff>

@@ -10,7 +10,9 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 		'showRecordFieldList' => 'hidden, name',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'hidden;;1, name,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array(
+			'showitem' => 'hidden;;1, name,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+		),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -57,7 +59,8 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 		),
 		'name' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_domain.name',
+			'label' =>
+				'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_domain.name',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
