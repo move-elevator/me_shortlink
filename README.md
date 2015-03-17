@@ -21,9 +21,9 @@
 6. you will redirected to your specified target
 
 ## Contact
-typo3@move-elevator.de
-Company: http://www.move-elevator.de
-Issue-Tracker - https://github.com/move-elevator/me_shortlink
+* typo3@move-elevator.de
+* Company: http://www.move-elevator.de
+* Issue-Tracker - https://github.com/move-elevator/me_shortlink
 
 ## Change Log
 
