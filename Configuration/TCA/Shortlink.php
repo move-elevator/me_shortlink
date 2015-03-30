@@ -17,6 +17,14 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 		'2' => array('showitem' => 'params'),
 	),
 	'columns' => array(
+		't3ver_label' => array(
+			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
+			'config' => array(
+				'type' => 'input',
+				'size' => '30',
+				'max' => '30',
+			)
+		),
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
