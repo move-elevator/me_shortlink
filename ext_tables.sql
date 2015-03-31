@@ -51,7 +51,6 @@ CREATE TABLE tx_meshortlink_domain_model_domain (
   starttime int(11) unsigned DEFAULT '0' NOT NULL,
   endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
-
   t3ver_oid INT(11) DEFAULT '0' NOT NULL,
   t3ver_id INT(11) DEFAULT '0' NOT NULL,
   t3ver_wsid INT(11) DEFAULT '0' NOT NULL,
