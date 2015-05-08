@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. just upload and activate the extension 
+1. just upload and activate the extension
 
 ## Configuration
 
@@ -26,6 +26,10 @@
 * Issue-Tracker - https://github.com/move-elevator/me_shortlink
 
 ## Change Log
+
+2015-03-17  Sascha Seyfert <sef@move-elevator.de>
+
+	* 1.4.2 - fix composer.json
 
 2015-03-17  Sascha Seyfert <sef@move-elevator.de>
 
