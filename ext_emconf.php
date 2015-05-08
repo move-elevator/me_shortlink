@@ -2,10 +2,10 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'm:e Shortlink Manager',
-	'description' => 'Shortlink Manager',
+	'description' => 'Extension to set shortlinks for different pages. It is also possible, to add google analytics tracking on this pages.',
 	'category' => 'fe',
-	'author' => 'Sascha Seyfert',
-	'author_email' => 'sef@move-elevator.de',
+	'author' => 'move:elevator',
+	'author_email' => 'typo3@move-elevator.de',
 	'author_company' => 'move:elevator',
 	'shy' => '',
 	'priority' => '',
@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.4.2',
+	'version' => '1.4.3',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.0.0-6.2.99',

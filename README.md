@@ -27,9 +27,9 @@
 
 ## Change Log
 
-2015-03-17  Sascha Seyfert <sef@move-elevator.de>
+2015-05-08  Steve Schütze <sts@move-elevator.de>
 
-	* 1.4.2 - fix composer.json
+	* 1.4.3 - fix composer.json
 
 2015-03-17  Sascha Seyfert <sef@move-elevator.de>
 
