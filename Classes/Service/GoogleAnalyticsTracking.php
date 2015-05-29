@@ -2,6 +2,8 @@
 
 namespace MoveElevator\MeShortlink\Service;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Class GoogleAnalyticsTracking
  *
@@ -33,14 +35,27 @@ class GoogleAnalyticsTracking {
 	 * @return string|bool
 	 */
 	public function trackPageView() {
-		if ($this->configuration['trackingEnabled'] === '1') {
-			$this->setTrackingFieldsByServerGlobals();
-			if (is_callable('curl_init')) {
-				return $this->sendCurlRequest();
-			}
+		if ($this->configuration['trackingEnabled'] !== '1') {
+			return TRUE;
 		}
 
-		return NULL;
+		$this->setTrackingFieldsByServerGlobals();
+		if (is_callable('curl_init') && (bool)$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
+			return $this->sendCurlRequest();
+		}
+
+		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+		/** @var \TYPO3\CMS\Backend\FrontendBackendUserAuthentication $frontendBackendUserAuthentication */
+		$frontendBackendUserAuthentication = $objectManager->get(
+			'TYPO3\CMS\Backend\FrontendBackendUserAuthentication'
+		);
+		$frontendBackendUserAuthentication->simplelog(
+			'There is no curl to track page view',
+			'me_shortlink'
+		);
+
+		return FALSE;
 	}
 
 	/**
@@ -58,6 +73,12 @@ class GoogleAnalyticsTracking {
 		curl_setopt($curlSession, CURLOPT_POST, count($this->trackingFields));
 		curl_setopt($curlSession, CURLOPT_POSTFIELDS, $fieldsRequestData);
 		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, 1);
+		if (
+			isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])
+			&& strlen(trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])) > 0
+		) {
+			curl_setopt($curlSession, CURLOPT_PROXY, trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer']));
+		}
 		$result = curl_exec($curlSession);
 
 		curl_close($curlSession);
