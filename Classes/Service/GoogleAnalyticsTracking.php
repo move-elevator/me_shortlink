@@ -33,19 +33,14 @@ class GoogleAnalyticsTracking {
 	 * @return string|bool
 	 */
 	public function trackPageView() {
-		if ($this->configuration['trackingEnabled'] !== '1') {
-			return TRUE;
+		if ($this->configuration['trackingEnabled'] === '1') {
+			$this->setTrackingFieldsByServerGlobals();
+			if (is_callable('curl_init')) {
+				return $this->sendCurlRequest();
+			}
 		}
 
-		$this->setTrackingFieldsByServerGlobals();
-		if (is_callable('curl_init') && (bool)$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse']) {
-			return $this->sendCurlRequest();
-		}
-
-		global $BE_USER;
-		$BE_USER->simplelog('There is no curl to track page view', 'MeShortlink');
-
-		return FALSE;
+		return NULL;
 	}
 
 	/**
@@ -63,12 +58,6 @@ class GoogleAnalyticsTracking {
 		curl_setopt($curlSession, CURLOPT_POST, count($this->trackingFields));
 		curl_setopt($curlSession, CURLOPT_POSTFIELDS, $fieldsRequestData);
 		curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, 1);
-		if (
-			isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])
-			&& strlen(trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])) > 0
-		) {
-			curl_setopt($curlSession, CURLOPT_PROXY, trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer']));
-		}
 		$result = curl_exec($curlSession);
 
 		curl_close($curlSession);

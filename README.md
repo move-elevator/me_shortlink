@@ -27,10 +27,6 @@
 
 ## Change Log
 
-2015-05-29  Steve Schütze <sts@move-elevator.de>
-
-	* 1.4.4 - add proxy support
-
 2015-05-08  Steve Schütze <sts@move-elevator.de>
 
 	* 1.4.3 - fix composer.json
