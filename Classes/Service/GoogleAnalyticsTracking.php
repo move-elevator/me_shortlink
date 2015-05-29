@@ -2,6 +2,8 @@
 
 namespace MoveElevator\MeShortlink\Service;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Class GoogleAnalyticsTracking
  *
@@ -42,8 +44,16 @@ class GoogleAnalyticsTracking {
 			return $this->sendCurlRequest();
 		}
 
-		global $BE_USER;
-		$BE_USER->simplelog('There is no curl to track page view', 'MeShortlink');
+		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+		/** @var \TYPO3\CMS\Backend\FrontendBackendUserAuthentication $frontendBackendUserAuthentication */
+		$frontendBackendUserAuthentication = $objectManager->get(
+			'TYPO3\CMS\Backend\FrontendBackendUserAuthentication'
+		);
+		$frontendBackendUserAuthentication->simplelog(
+			'There is no curl to track page view',
+			'me_shortlink'
+		);
 
 		return FALSE;
 	}
