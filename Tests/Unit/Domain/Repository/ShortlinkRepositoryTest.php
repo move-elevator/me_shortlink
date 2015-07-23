@@ -3,7 +3,7 @@
 namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
+use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 
 /**
