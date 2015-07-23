@@ -27,6 +27,10 @@
 
 ## Change Log
 
+2015-07-23  Steve Schütze <sts@move-elevator.de>
+
+	* 1.4.5 - update Testcases
+
 2015-05-29  Steve Schütze <sts@move-elevator.de>
 
 	* 1.4.4 - add proxy support

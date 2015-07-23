@@ -10,7 +10,7 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
  *
  * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Model
  */
-class DomainTest extends BaseTestCase {
+class DomainTest extends UnitTestCase {
 
 	/**
 	 * @var \MoveElevator\MeShortlink\Domain\Model\Domain

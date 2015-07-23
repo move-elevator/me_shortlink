@@ -14,7 +14,7 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
  * @package me_shortlink
  * @subpackage Tests
  */
-class ShortlinkUtilityTest extends BaseTestCase {
+class ShortlinkUtilityTest extends UnitTestCase {
 
 	/**
 	 * @var \Tx_Phpunit_Framework

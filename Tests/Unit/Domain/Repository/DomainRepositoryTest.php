@@ -11,7 +11,7 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
  *
  * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Repository
  */
-class DomainRepositoryTest extends BaseTestCase {
+class DomainRepositoryTest extends UnitTestCase {
 
 	/**
 	 * @var \Tx_Phpunit_Framework
