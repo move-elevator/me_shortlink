@@ -5,7 +5,7 @@ namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
-use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
+use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 
 /**
@@ -14,7 +14,7 @@ use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
  * @package me_shortlink
  * @subpackage Tests
  */
-class ShortlinkUtilityTest extends BaseTestCase {
+class ShortlinkUtilityTest extends UnitTestCase {
 
 	/**
 	 * @var \Tx_Phpunit_Framework

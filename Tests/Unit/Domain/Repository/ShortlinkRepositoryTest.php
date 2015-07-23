@@ -3,7 +3,7 @@
 namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
+use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 
 /**
@@ -11,7 +11,7 @@ use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
  *
  * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Repository
  */
-class ShortlinkRepositoryTest extends BaseTestCase {
+class ShortlinkRepositoryTest extends UnitTestCase {
 
 	/**
 	 * @var \Tx_Phpunit_Framework

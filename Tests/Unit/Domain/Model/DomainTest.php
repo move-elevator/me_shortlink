@@ -3,14 +3,14 @@
 namespace MoveElevator\MeShortlink\Tests\Unit\Domain\Model;
 
 use \MoveElevator\MeShortlink\Domain\Model\Domain;
-use \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase;
+use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 /**
  * Class DomainTest
  *
  * @package MoveElevator\MeShortlink\Tests\Unit\Domain\Model
  */
-class DomainTest extends BaseTestCase {
+class DomainTest extends UnitTestCase {
 
 	/**
 	 * @var \MoveElevator\MeShortlink\Domain\Model\Domain
