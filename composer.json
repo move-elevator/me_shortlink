@@ -14,5 +14,10 @@
   },
   "config": {
     "bin-dir": "Build/bin"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "dev-feature/prepare-7-LTS"
+    }
   }
 }
