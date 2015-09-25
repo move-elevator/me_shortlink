@@ -9,6 +9,9 @@
     "typo3-ci/typo3cms": "6.2.1",
     "typo3-ci/typo3sniffpool": "~1.0"
   },
+  "replace": {
+    "me_shortlink": "*"
+  },
   "config": {
     "bin-dir": "Build/bin"
   }
