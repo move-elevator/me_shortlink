@@ -18,7 +18,7 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
 		)
 	);
 	$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/index_ts.php']['preBeUser'][] =
-		'MoveElevator\MeShortlink\Service\CheckAlternativeIdMethods->redirect';
+		'MoveElevator\MeShortlink\Service\ShortlinkService->init';
 	$TYPO3_CONF_VARS['EXTCONF']['cms']['db_layout']['addTables']['tx_meshortlink_domain_model_shortlink'][0] = array(
 		'fList' => 'title,page,params,url',
 		'icon' => TRUE

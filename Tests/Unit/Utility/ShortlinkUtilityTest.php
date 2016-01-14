@@ -4,7 +4,6 @@ namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
 
@@ -17,14 +16,14 @@ use \TYPO3\CMS\Core\Tests\UnitTestCase;
 class ShortlinkUtilityTest extends UnitTestCase {
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+	 */
+	protected $objectManager;
+
+	/**
 	 * @var \Tx_Phpunit_Framework
 	 */
 	protected $testingFramework;
-
-	/**
-	 * @var  \MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository
-	 */
-	protected $repositoryObject;
 
 	/**
 	 * @var  \MoveElevator\MeShortlink\Utility\ShortlinkUtility
@@ -32,20 +31,21 @@ class ShortlinkUtilityTest extends UnitTestCase {
 	protected $utilityObject;
 
 	/**
+	 * @var  \MoveElevator\MeShortlink\Service\ShortlinkService
+	 */
+	protected $serviceObject;
+
+	/**
 	 * @return void
 	 */
 	public function setUp() {
 		$this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
 		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$this->repositoryObject = $this->objectManager->get(
-			'MoveElevator\MeShortlink\Domain\Repository\ShortlinkRepository'
-		);
+
 		$this->utilityObject = new ShortlinkUtility();
-		$this->fixtureShortlinkUid = $this->testingFramework->createRecord(
-			'tx_meshortlink_domain_model_shortlink', array(
-				'title' => 'fooo',
-				'url' => 'move-elevator.de',
-			)
+		$this->fixtureShortlink = array(
+			'title' => 'fooo',
+			'url' => 'http://move-elevator.de',
 		);
 	}
 
@@ -55,7 +55,6 @@ class ShortlinkUtilityTest extends UnitTestCase {
 	public function tearDown() {
 		$this->testingFramework->cleanUp();
 		unset($this->testingFramework);
-		unset($this->repositoryObject);
 	}
 
 	/**
@@ -63,11 +62,7 @@ class ShortlinkUtilityTest extends UnitTestCase {
 	 * @return void
 	 */
 	public function testGetRedirectUrlFromShortlink() {
-		$querySettings = new Typo3QuerySettings();
-		$querySettings->setRespectStoragePage(FALSE);
-		$this->repositoryObject->setDefaultQuerySettings($querySettings);
-		$shortLink = $this->repositoryObject->findByUid($this->fixtureShortlinkUid);
-		$redirectUrl = ShortlinkUtility::getRedirectUrlFromShortlink($shortLink);
+		$redirectUrl = ShortlinkUtility::getRedirectUrlFromShortlink($this->fixtureShortlink);
 		$this->assertEquals($redirectUrl, 'http://move-elevator.de');
 	}
 
@@ -85,19 +80,6 @@ class ShortlinkUtilityTest extends UnitTestCase {
 	 * @return void
 	 */
 	public function testGetInternalUrlFromShortlink() {
-		$shortLink = $this->repositoryObject->findByUid($this->fixtureShortlinkUid);
-		$this->assertStringStartsWith('http', $this->utilityObject->getInternalUrlFromShortlink($shortLink));
+		$this->assertStringStartsWith('http', $this->utilityObject->getInternalUrlFromShortlink($this->fixtureShortlink));
 	}
-
-	/**
-	 * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getSpeakingUrlFromRealUrl
-	 * @return void
-	 */
-	public function testGetSpeakingUrlFromRealUrl() {
-		$this->markTestIncomplete('just check against PageId 1!');
-		$this->assertSame('', $this->utilityObject->getSpeakingUrlFromRealUrl(1));
-	}
-
 }
-
-?>
