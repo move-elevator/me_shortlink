@@ -5,7 +5,6 @@ namespace MoveElevator\MeShortlink\Utility;
 use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
-use \MoveElevator\MeShortlink\Domain\Model\Shortlink;
 
 /**
  * Class ShortlinkUtility
@@ -39,14 +38,14 @@ class ShortlinkUtility {
 	/**
 	 * Get url from Shortlink
 	 *
-	 * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
+	 * @param array $shortLink
 	 * @return string
 	 */
-	public static function getRedirectUrlFromShortlink(Shortlink $shortLink) {
-		if (intval($shortLink->getPage()) > 0) {
+	public static function getRedirectUrlFromShortlink(array $shortLink) {
+		if (intval($shortLink['page']) > 0) {
 			$url = self::getInternalUrlFromShortlink($shortLink);
 		} else {
-			$url = $shortLink->getUrl();
+			$url = $shortLink['url'];
 		}
 
 		return $url;
@@ -55,12 +54,12 @@ class ShortlinkUtility {
 	/**
 	 * Returns full URL of internal Page with optinal Params
 	 *
-	 * @param \MoveElevator\MeShortlink\Domain\Model\Shortlink $shortLink
+	 * @param array $shortLink
 	 * @return string
 	 */
-	public static function getInternalUrlFromShortlink(Shortlink $shortLink) {
-		$shortLinkPage = $shortLink->getPage();
-		$shortLinkParams = $shortLink->getParams();
+	public static function getInternalUrlFromShortlink(array $shortLink) {
+		$shortLinkPage = $shortLink['page'];
+		$shortLinkParams = $shortLink['params'];
 
 		if (ExtensionManagementUtility::isLoaded('realurl')) {
 			$realUrlParams = GeneralUtility::explodeUrl2Array($shortLinkParams);

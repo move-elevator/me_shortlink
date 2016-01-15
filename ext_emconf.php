@@ -17,12 +17,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.4.5',
+	'version' => '1.5.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '6.0.0-6.2.99',
 		),
 		'conflicts' => array(),
-		'suggests' => array(),
+		'suggests' => array(
+			'realurl' => '1.2.0-1.13-3'
+		),
 	),
 );
