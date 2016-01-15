@@ -4,7 +4,9 @@ namespace MoveElevator\MeShortlink\Service;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Utility\HttpUtility;
+use \TYPO3\CMS\Core\Database\DatabaseConnection;
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
+
 
 /**
  * Class ShortlinkService
@@ -99,9 +101,10 @@ class ShortlinkService {
 	 * use classic TYPO3_DB connection to prevent overhead loading of extbase, performance and mapping issues
 	 *
 	 * @param string $httpHost
+	 * @return array|FALSE|NULL
 	 */
 	protected function findOneByDomainName($httpHost) {
-		return $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow(
+		return $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
 			'*',
 			'tx_meshortlink_domain_model_domain',
 			'name = "' . addslashes($httpHost) . '"'
@@ -112,13 +115,22 @@ class ShortlinkService {
 	 * use classic TYPO3_DB connection to prevent overhead loading of extbase, performance and mapping issues
 	 *
 	 * @param string $shortLinkToCheck
-	 * @return mixed
+	 * @return array|NULL
 	 */
 	protected function findByShortlinkString($shortLinkToCheck) {
-		return $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+		return $this->getDatabaseConnection()->exec_SELECTgetRows(
 			'*',
 			'tx_meshortlink_domain_model_shortlink',
 			'title = "' . addslashes($shortLinkToCheck) . '"'
 		);
+	}
+
+	/**
+	 * get DatabaseConnection
+	 *
+	 * @return DatabaseConnection
+	 */
+	protected function getDatabaseConnection() {
+		return $GLOBALS['TYPO3_DB'];
 	}
 }
