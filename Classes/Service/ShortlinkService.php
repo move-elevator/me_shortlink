@@ -15,10 +15,17 @@ use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
  */
 class ShortlinkService {
 
+	/**
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+	 */
+	protected $objectManager;
+
 	/*
 	 * @return void
 	 */
 	public function init() {
+		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+
 		$requestUri = GeneralUtility::getIndpEnv('REQUEST_URI');
 		$httpHost = GeneralUtility::getHostname();
 		$shortLinkToCheck = ShortlinkUtility::getValidShortlink($requestUri);
