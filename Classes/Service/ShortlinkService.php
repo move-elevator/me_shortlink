@@ -96,6 +96,8 @@ class ShortlinkService {
 	}
 
 	/**
+	 * use classic TYPO3_DB connection to prevent overhead loading of extbase, performance and mapping issues
+	 *
 	 * @param string $httpHost
 	 */
 	protected function findOneByDomainName($httpHost) {
@@ -107,14 +109,16 @@ class ShortlinkService {
 	}
 
 	/**
+	 * use classic TYPO3_DB connection to prevent overhead loading of extbase, performance and mapping issues
+	 *
 	 * @param string $shortLinkToCheck
 	 * @return mixed
 	 */
-	protected function findByShortlinkString($shortLinkToCheck){
+	protected function findByShortlinkString($shortLinkToCheck) {
 		return $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
-				'*',
-				'tx_meshortlink_domain_model_shortlink',
-				'title = "' . addslashes($shortLinkToCheck) . '"'
+			'*',
+			'tx_meshortlink_domain_model_shortlink',
+			'title = "' . addslashes($shortLinkToCheck) . '"'
 		);
 	}
 }
