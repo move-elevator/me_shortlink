@@ -24,9 +24,6 @@ class ShortlinkService {
 		$shortLinkToCheck = ShortlinkUtility::getValidShortlink($requestUri);
 
 		if ($shortLinkToCheck !== FALSE) {
-			if (!isset($GLOBALS['TCA']['tx_meshortlink_domain_model_shortlink'])) {
-				$GLOBALS['TSFE']->includeTCA();
-			}
 			$shortLinks = $this->findByShortlinkString($shortLinkToCheck);
 			if (count($shortLinks) > 0) {
 				$domain = $this->getDomain($httpHost);
