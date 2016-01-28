@@ -7,7 +7,6 @@ use \TYPO3\CMS\Core\Utility\HttpUtility;
 use \TYPO3\CMS\Core\Database\DatabaseConnection;
 use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 
-
 /**
  * Class ShortlinkService
  *

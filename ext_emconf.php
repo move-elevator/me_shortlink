@@ -20,11 +20,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '1.5.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.0.0-7.7.99',
+			'typo3' => '6.2.0-7.9.99',
 		),
 		'conflicts' => array(),
 		'suggests' => array(
-			'realurl' => '1.2.0-1.13-3'
+			'realurl' => '1.2.0-1.13.5'
 		),
 	),
 );

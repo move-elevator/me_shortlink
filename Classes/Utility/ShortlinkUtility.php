@@ -12,6 +12,7 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  * @package MoveElevator\MeShortlink\Utility
  */
 class ShortlinkUtility {
+	const PAGETYPE_TO_GET_TYPOSCRIPT = 0;
 
 	/**
 	 * Check if the url has a valid shortlink part
@@ -58,15 +59,11 @@ class ShortlinkUtility {
 	 * @return string
 	 */
 	public static function getInternalUrlFromShortlink(array $shortLink) {
-		$shortLinkPage = $shortLink['page'];
-		$shortLinkParams = $shortLink['params'];
+		self::initTsfe(intval($shortLink['page']));
 
-		if (ExtensionManagementUtility::isLoaded('realurl')) {
-			$realUrlParams = GeneralUtility::explodeUrl2Array($shortLinkParams);
-			$url = self::getSpeakingUrlFromRealUrl($shortLinkPage, $realUrlParams);
-		} else {
-			$url = 'index.php?id=' . $shortLinkPage . $shortLinkParams;
-		}
+		$shortLinkPage = $shortLink['page'];
+		$shortLinkParams = GeneralUtility::explodeUrl2Array($shortLink['params']);
+		$url = $GLOBALS['TSFE']->cObj->getTypoLink_URL($shortLink['page']);
 
 		return GeneralUtility::locationHeaderUrl($url);
 	}
@@ -113,4 +110,25 @@ class ShortlinkUtility {
 		return $url;
 	}
 
+	/**
+	 * @return void
+	 */
+	protected static function initTsfe($pageId) {
+		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+
+		$GLOBALS['TSFE'] = $objectManager->get(
+			'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController',
+			$GLOBALS['TYPO3_CONF_VARS'],
+			$pageId,
+			self::PAGETYPE_TO_GET_TYPOSCRIPT
+		);
+
+		$GLOBALS['TSFE']->initFEuser();
+		$GLOBALS['TSFE']->initTemplate();
+		\TYPO3\CMS\Core\Core\Bootstrap::getInstance()->loadCachedTca();
+		$GLOBALS['TSFE']->fetch_the_id();
+		$GLOBALS['TSFE']->getConfigArray();
+		$GLOBALS['TSFE']->cObj = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
+	}
 }
