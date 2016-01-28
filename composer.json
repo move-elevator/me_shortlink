@@ -1,5 +1,5 @@
 {
-  "name": "me-shortlink",
+  "name": "moveelevator/me-shortlink",
   "type": "typo3-cms-extension",
   "require-dev": {
     "squizlabs/php_codesniffer": "1.5.5",
@@ -9,7 +9,15 @@
     "typo3-ci/typo3cms": "6.2.1",
     "typo3-ci/typo3sniffpool": "~1.0"
   },
+  "replace": {
+    "me_shortlink": "*"
+  },
   "config": {
     "bin-dir": "Build/bin"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "dev-feature/prepare-7-LTS"
+    }
   }
 }
