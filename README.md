@@ -27,6 +27,11 @@
 
 ## Change Log
 
+2016-01-29  Jan Maennig <jam@move-elevator.de>
+
+	* add TYPO3 7.6 compatibility
+	* used typolink_url to create shortlink target
+
 2015-07-23  Steve Schütze <sts@move-elevator.de>
 
 	* 1.4.5 - update Testcases
