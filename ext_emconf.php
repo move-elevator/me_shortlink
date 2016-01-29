@@ -2,7 +2,8 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'm:e Shortlink Manager',
-	'description' => 'Extension to set shortlinks for different pages. It is also possible, to add google analytics tracking on this pages.',
+	'description' => 'Extension to set shortlinks for different pages. It is also possible, to add google analytics ' .
+		'tracking on this pages.',
 	'category' => 'fe',
 	'author' => 'move:elevator',
 	'author_email' => 'typo3@move-elevator.de',
