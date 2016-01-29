@@ -10,7 +10,7 @@ use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 /**
  * Class ShortlinkService
  *
- * @package MoveElevator\MeShortlink\Controller
+ * @package MoveElevator\MeShortlink\Service
  */
 class ShortlinkService {
 

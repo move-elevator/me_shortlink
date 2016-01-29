@@ -8,15 +8,6 @@ if (!defined('TYPO3_MODE')) {
 
 
 if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
-	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-		'MoveElevator.' . $_EXTKEY,
-		'Shortlink',
-		array(
-			'Shortlink' => 'redirect',
-		), array(
-			'Shortlink' => 'redirect',
-		)
-	);
 	$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/index_ts.php']['preBeUser'][] =
 		'MoveElevator\MeShortlink\Service\ShortlinkService->init';
 	$TYPO3_CONF_VARS['EXTCONF']['cms']['db_layout']['addTables']['tx_meshortlink_domain_model_shortlink'][0] = array(
