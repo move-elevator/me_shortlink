@@ -17,7 +17,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "dev-feature/prepare-7-LTS"
+      "dev-master": "master"
     }
   }
 }
