@@ -6,7 +6,6 @@ use \MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Core\Tests\UnitTestCase;
 
-
 /**
  * Test case for class '\MoveElevator\MeShortlink\Tests\Unit\Utility'
  *
