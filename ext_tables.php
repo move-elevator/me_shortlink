@@ -27,10 +27,6 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
 	),
 );
 
-if (version_compare(TYPO3_branch, '6.1', '<')) {
-	\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tx_meshortlink_domain_model_shortlink');
-}
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_meshortlink_domain_model_domain');
 $TCA['tx_meshortlink_domain_model_domain'] = array(
 	'ctrl' => array(
@@ -54,7 +50,3 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_meshortlink_domain_model_domain.png'
 	),
 );
-
-if (version_compare(TYPO3_branch, '6.1', '<')) {
-	\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tx_meshortlink_domain_model_domain');
-}
