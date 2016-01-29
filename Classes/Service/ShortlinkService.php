@@ -88,7 +88,6 @@ class ShortlinkService {
 	 * @return void
 	 */
 	protected function trackAnalytics() {
-		/* @var $generalUtility \MoveElevator\MeLibrary\Utility\GeneralUtility */
 		$configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['me_shortlink']);
 		if (isset($configuration['googleAnalyticsSettings.']) && is_array($configuration['googleAnalyticsSettings.'])) {
 			/* @var $trackingService \MoveElevator\MeShortlink\Service\GoogleAnalyticsTracking */
@@ -110,7 +109,7 @@ class ShortlinkService {
 		return $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
 			'*',
 			'tx_meshortlink_domain_model_domain',
-			'name = "' . addslashes($httpHost) . '"'
+			'name = "' . addslashes($httpHost) . '"' . $this->getEnableFields()
 		);
 	}
 
@@ -124,7 +123,7 @@ class ShortlinkService {
 		return $this->getDatabaseConnection()->exec_SELECTgetRows(
 			'*',
 			'tx_meshortlink_domain_model_shortlink',
-			'title = "' . addslashes($shortLinkToCheck) . '"'
+			'title = "' . addslashes($shortLinkToCheck) . '"' . $this->getEnableFields()
 		);
 	}
 
@@ -135,5 +134,17 @@ class ShortlinkService {
 	 */
 	protected function getDatabaseConnection() {
 		return $GLOBALS['TYPO3_DB'];
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getEnableFields() {
+		$enableFields = ' AND hidden = 0';
+		$enableFields .= ' AND deleted = 0';
+		$enableFields .= ' AND starttime <= ' . $GLOBALS['SIM_ACCESS_TIME'];
+		$enableFields .= ' AND (endtime=0 OR endtime>' . $GLOBALS['SIM_ACCESS_TIME'] . ')';
+
+		return $enableFields;
 	}
 }
