@@ -2,9 +2,8 @@
 
 namespace MoveElevator\MeShortlink\Utility;
 
-use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-
+use \TYPO3\CMS\Core\Core\Bootstrap;
 
 /**
  * Class ShortlinkUtility
@@ -37,7 +36,7 @@ class ShortlinkUtility {
 	}
 
 	/**
-	 * Get url from Shortlink
+	 * Get url from shortlink
 	 *
 	 * @param array $shortLink
 	 * @return string
@@ -59,61 +58,19 @@ class ShortlinkUtility {
 	 * @return string
 	 */
 	public static function getInternalUrlFromShortlink(array $shortLink) {
-		self::initTsfe(intval($shortLink['page']));
+		self::initializeFrontendConfiguration(intval($shortLink['page']));
 
 		$shortLinkPage = $shortLink['page'];
 		$shortLinkParams = GeneralUtility::explodeUrl2Array($shortLink['params']);
-		$url = $GLOBALS['TSFE']->cObj->getTypoLink_URL($shortLink['page']);
+		$url = $GLOBALS['TSFE']->cObj->getTypoLink_URL($shortLinkPage, $shortLinkParams);
 
 		return GeneralUtility::locationHeaderUrl($url);
 	}
 
 	/**
-	 * Get Speaking path from RealUrl Extension
-	 *
-	 * @param integer $pid
-	 * @param array $params
-	 * @return array
-	 */
-	public static function getSpeakingUrlFromRealUrl($pid, $params = array()) {
-		//init page object to get realUrl configuration
-		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$GLOBALS['TSFE'] = new \stdClass();
-		$GLOBALS['TSFE']->sys_page = $objectManager->get('TYPO3\CMS\Frontend\Page\PageRepository');
-		$GLOBALS['TSFE']->tmpl = $objectManager->get('TYPO3\CMS\Core\TypoScript\TemplateService');
-		$GLOBALS['TSFE']->csConvObj = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Charset\\CharsetConverter');
-		$GLOBALS['TSFE']->config['config']['tx_realurl_enable'] = 1;
-
-		$pageRow = $GLOBALS['TYPO3_DB']->exec_SELECTgetSingleRow('*', 'pages', 'uid = ' . (int)$pid);
-
-		if ($pageRow) {
-			$conf['LD'] = $GLOBALS['TSFE']->tmpl->linkData(
-				$pageRow, '', 0, 'index.php', '', GeneralUtility::implodeArrayForUrl('', $params)
-			);
-		}
-
-		/** @var \tx_realurl $realUrl */
-		$realUrl = GeneralUtility::makeInstance('tx_realurl');
-		$realUrl->encodeSpURL($conf);
-
-		$url = 'index.php?id=' . $pid;
-
-		if (is_array($conf) && isset($conf['LD'])) {
-			$url = $conf['LD']['totalURL'];
-			if ($url === '') {
-				$url = $conf['LD']['url'];
-			}
-		}
-
-		unset($GLOBALS['TSFE']);
-
-		return $url;
-	}
-
-	/**
 	 * @return void
 	 */
-	protected static function initTsfe($pageId) {
+	protected static function initializeFrontendConfiguration($pageId) {
 		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
 		$objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 
@@ -126,9 +83,9 @@ class ShortlinkUtility {
 
 		$GLOBALS['TSFE']->initFEuser();
 		$GLOBALS['TSFE']->initTemplate();
-		\TYPO3\CMS\Core\Core\Bootstrap::getInstance()->loadCachedTca();
+		Bootstrap::getInstance()->loadCachedTca();
 		$GLOBALS['TSFE']->fetch_the_id();
 		$GLOBALS['TSFE']->getConfigArray();
-		$GLOBALS['TSFE']->cObj = GeneralUtility::makeInstance('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
+		$GLOBALS['TSFE']->cObj = $objectManager->get('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
 	}
 }
