@@ -66,7 +66,8 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         ),
         'title' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_shortlink.title',
+            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+                'locallang_db.xlf:tx_meshortlink_domain_model_shortlink.title',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -76,7 +77,8 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         ),
         'page' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_shortlink.page',
+            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+                'locallang_db.xlf:tx_meshortlink_domain_model_shortlink.page',
             'config' => array(
                 'type' => 'group',
                 'internal_type' => 'db',
@@ -87,7 +89,8 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         ),
         'url' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_shortlink.url',
+            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+                'locallang_db.xlf:tx_meshortlink_domain_model_shortlink.url',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -96,7 +99,8 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         ),
         'params' => array(
             'exclude' => 0,
-            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/locallang_db.xlf:tx_meshortlink_domain_model_shortlink.params',
+            'label' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+                'locallang_db.xlf:tx_meshortlink_domain_model_shortlink.params',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
