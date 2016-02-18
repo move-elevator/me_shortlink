@@ -27,6 +27,11 @@
 
 ## Change Log
 
+2016-02-18 Philipp Heckelt <phe@move-elevator.de>
+
+    * added blacklists for phpunit tests
+    * changed to standard PSR2
+
 2016-01-29  Jan Maennig <jam@move-elevator.de>
 
 	* add TYPO3 7.6 compatibility
