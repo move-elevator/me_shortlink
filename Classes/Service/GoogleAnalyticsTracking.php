@@ -22,7 +22,10 @@ class GoogleAnalyticsTracking
      */
     protected $trackingFields;
 
-    const GOOGLE_ANALYTICS_HOSTNAME = 'http://www.google-analytics.com/collect';
+    /**
+     * @var string
+     */
+    protected $googleAnalyticsHostname = 'http://www.google-analytics.com/collect';
 
     /**
      * @param array $configuration
@@ -70,22 +73,29 @@ class GoogleAnalyticsTracking
             $fieldsRequestData .= $key . '=' . $value . '&';
             rtrim($fieldsRequestData, '&');
         }
-        $curlSession = curl_init();
-        curl_setopt($curlSession, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-        curl_setopt($curlSession, CURLOPT_URL, self::GOOGLE_ANALYTICS_HOSTNAME);
-        curl_setopt($curlSession, CURLOPT_POST, count($this->trackingFields));
-        curl_setopt($curlSession, CURLOPT_POSTFIELDS, $fieldsRequestData);
-        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, 1);
+
+        $config = array(
+            'follow_redirects' => true,
+            'strict_redirects' => true
+        );
+
         if (isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])
             && strlen(trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer'])) > 0
         ) {
-            curl_setopt($curlSession, CURLOPT_PROXY, trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer']));
+            $config['proxy_host'] = trim($GLOBALS['TYPO3_CONF_VARS']['SYS']['curlProxyServer']);
         }
-        $result = curl_exec($curlSession);
 
-        curl_close($curlSession);
+        $httpRequest = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            'TYPO3\CMS\Core\Http\HttpRequest',
+            $this->googleAnalyticsHostname,
+            'POST',
+            $config
+        );
 
-        return $result;
+        $httpRequest->addPostParameter($fieldsRequestData);
+        $result = $httpRequest->send();
+
+        return $result->getBody();
     }
 
     /**
