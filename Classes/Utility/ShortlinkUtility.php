@@ -72,7 +72,7 @@ class ShortlinkUtility
     }
 
     /**
-	 * @param int $pageId
+     * @param int $pageId
      * @return void
      */
     protected static function initializeFrontendConfiguration($pageId)
