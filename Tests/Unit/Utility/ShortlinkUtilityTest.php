@@ -45,7 +45,6 @@ class ShortlinkUtilityTest extends UnitTestCase
      */
     public function setUp()
     {
-        $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 
         $this->utilityObject = new ShortlinkUtility();
@@ -53,15 +52,6 @@ class ShortlinkUtilityTest extends UnitTestCase
             'title' => 'fooo',
             'url' => 'http://move-elevator.de',
         );
-    }
-
-    /**
-     * @return void
-     */
-    public function tearDown()
-    {
-        $this->testingFramework->cleanUp();
-        unset($this->testingFramework);
     }
 
     /**
