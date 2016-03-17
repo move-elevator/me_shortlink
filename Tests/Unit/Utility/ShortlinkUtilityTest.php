@@ -26,11 +26,6 @@ class ShortlinkUtilityTest extends UnitTestCase
     protected $objectManager;
 
     /**
-     * @var \Tx_Phpunit_Framework
-     */
-    protected $testingFramework;
-
-    /**
      * @var  \MoveElevator\MeShortlink\Utility\ShortlinkUtility
      */
     protected $utilityObject;
