@@ -45,7 +45,7 @@ class ShortlinkUtility
      */
     public static function getRedirectUrlFromShortlink(array $shortLink)
     {
-        if (intval($shortLink['page']) > 0) {
+        if (isset($shortLink['page']) && intval($shortLink['page']) > 0) {
             $url = self::getInternalUrlFromShortlink($shortLink);
         } else {
             $url = $shortLink['url'];
