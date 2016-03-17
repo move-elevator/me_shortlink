@@ -27,6 +27,10 @@
 
 ## Change Log
 
+2016-03-17  Jan Maennig <jam@move-elevator.de>
+
+	* fixed unittest without EXT: phpunit
+
 2016-02-18 Philipp Heckelt <phe@move-elevator.de>
 
     * added blacklists for phpunit tests

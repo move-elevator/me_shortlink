@@ -26,11 +26,6 @@ class ShortlinkUtilityTest extends UnitTestCase
     protected $objectManager;
 
     /**
-     * @var \Tx_Phpunit_Framework
-     */
-    protected $testingFramework;
-
-    /**
      * @var  \MoveElevator\MeShortlink\Utility\ShortlinkUtility
      */
     protected $utilityObject;
@@ -45,7 +40,6 @@ class ShortlinkUtilityTest extends UnitTestCase
      */
     public function setUp()
     {
-        $this->testingFramework = new \Tx_Phpunit_Framework('tx_meshortlink');
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 
         $this->utilityObject = new ShortlinkUtility();
@@ -53,15 +47,6 @@ class ShortlinkUtilityTest extends UnitTestCase
             'title' => 'fooo',
             'url' => 'http://move-elevator.de',
         );
-    }
-
-    /**
-     * @return void
-     */
-    public function tearDown()
-    {
-        $this->testingFramework->cleanUp();
-        unset($this->testingFramework);
     }
 
     /**
@@ -90,6 +75,7 @@ class ShortlinkUtilityTest extends UnitTestCase
      */
     public function testGetInternalUrlFromShortlink()
     {
+        $this->fixtureShortlink['page'] = 1;
         $this->assertStringStartsWith(
             'http',
             $this->utilityObject->getInternalUrlFromShortlink($this->fixtureShortlink)
