@@ -80,6 +80,7 @@ class ShortlinkUtilityTest extends UnitTestCase
      */
     public function testGetInternalUrlFromShortlink()
     {
+        $this->fixtureShortlink['page'] = 1;
         $this->assertStringStartsWith(
             'http',
             $this->utilityObject->getInternalUrlFromShortlink($this->fixtureShortlink)
