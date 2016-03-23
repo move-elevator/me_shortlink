@@ -5,6 +5,7 @@ namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 use MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
+use TYPO3\CMS\Core\Core\Bootstrap;
 
 /**
  * Test case for class '\MoveElevator\MeShortlink\Tests\Unit\Utility'
