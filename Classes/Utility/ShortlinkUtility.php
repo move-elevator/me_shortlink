@@ -77,6 +77,9 @@ class ShortlinkUtility
      */
     protected static function initializeFrontendConfiguration($pageId)
     {
+        if ($GLOBALS['TSFE'] instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController) {
+            return;
+        }
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 

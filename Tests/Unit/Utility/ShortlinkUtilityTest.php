@@ -75,10 +75,30 @@ class ShortlinkUtilityTest extends UnitTestCase
      */
     public function testGetInternalUrlFromShortlink()
     {
+        $GLOBALS['TSFE'] = $this->initializeFrontendConfiguration(1);
+
         $this->fixtureShortlink['page'] = 1;
         $this->assertStringStartsWith(
             'http',
             $this->utilityObject->getInternalUrlFromShortlink($this->fixtureShortlink)
         );
+    }
+
+    protected static function initializeFrontendConfiguration($pageId)
+    {
+        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+        $objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+
+        $GLOBALS['TSFE'] = $objectManager->get(
+            'TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController',
+            $GLOBALS['TYPO3_CONF_VARS'],
+            $pageId,
+            0
+        );
+
+        $GLOBALS['TSFE']->initFEuser();
+        $GLOBALS['TSFE']->initTemplate();
+        Bootstrap::getInstance()->loadCachedTca();
+        $GLOBALS['TSFE']->cObj = $objectManager->get('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
     }
 }
