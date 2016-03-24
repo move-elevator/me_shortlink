@@ -4,6 +4,7 @@ namespace MoveElevator\MeShortlink\Utility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Core\Bootstrap;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Class ShortlinkUtility
@@ -77,6 +78,10 @@ class ShortlinkUtility
      */
     protected static function initializeFrontendConfiguration($pageId)
     {
+        if ($GLOBALS['TSFE']->cObj instanceof ContentObjectRenderer) {
+            return;
+        }
+
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 

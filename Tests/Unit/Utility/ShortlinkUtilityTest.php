@@ -5,6 +5,7 @@ namespace MoveElevator\MeShortlink\Tests\Unit\Utility;
 use MoveElevator\MeShortlink\Utility\ShortlinkUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
+use TYPO3\CMS\Core\Core\Bootstrap;
 
 /**
  * Test case for class '\MoveElevator\MeShortlink\Tests\Unit\Utility'
@@ -67,18 +68,5 @@ class ShortlinkUtilityTest extends UnitTestCase
     {
         $this->assertFalse($this->utilityObject->getValidShortlink('*foo-bar_batz23.html'));
         $this->assertSame('foo-bar_batz23', ShortlinkUtility::getValidShortlink('foo-bar_batz23'));
-    }
-
-    /**
-     * @covers \MoveElevator\MeShortlink\Utility\ShortlinkUtility::getInternalUrlFromShortlink
-     * @return void
-     */
-    public function testGetInternalUrlFromShortlink()
-    {
-        $this->fixtureShortlink['page'] = 1;
-        $this->assertStringStartsWith(
-            'http',
-            $this->utilityObject->getInternalUrlFromShortlink($this->fixtureShortlink)
-        );
     }
 }
