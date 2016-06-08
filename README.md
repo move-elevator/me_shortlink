@@ -15,10 +15,11 @@
 
 1. the best way to manage the shortlink is to create a sysfolder and put all your records into it
 2. add new shortlink record
-3. you can link the record to an internal or external page
-4. save
-5. enter www.your-domain.com/yourshortlink
-6. you will redirected to your specified target
+3. select the language of the shortlink, its only important for internal links
+4. you can link the record to an internal or external page
+5. save
+6. enter www.your-domain.com/yourshortlink
+7. you will redirected to your specified target
 
 ## Contact
 * typo3@move-elevator.de
@@ -26,6 +27,10 @@
 * Issue-Tracker - https://github.com/move-elevator/me_shortlink
 
 ## Change Log
+
+2016-06-08  Philipp Heckelt <phe@move-elevator.de>
+
+    * 1.6.0 - add multilanguage support
 
 2016-03-17  Jan Maennig <jam@move-elevator.de>
 
