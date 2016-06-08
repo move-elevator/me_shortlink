@@ -26,7 +26,10 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) .
             'Configuration/TCA/Shortlink.php',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) .
-            'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png'
+            'Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l18n_parent',
+        'transOrigDiffSourceField' => 'l18n_diffsource'
     ),
 );
 

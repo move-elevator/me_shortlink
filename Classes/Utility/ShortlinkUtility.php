@@ -67,6 +67,7 @@ class ShortlinkUtility
 
         $shortLinkPage = $shortLink['page'];
         $shortLinkParams = GeneralUtility::explodeUrl2Array($shortLink['params']);
+        $shortLinkParams['L'] = $shortLink['sys_language_uid'];
         $url = $GLOBALS['TSFE']->cObj->getTypoLink_URL($shortLinkPage, $shortLinkParams);
 
         return GeneralUtility::locationHeaderUrl($url);
