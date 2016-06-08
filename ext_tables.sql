@@ -31,8 +31,8 @@ CREATE TABLE tx_meshortlink_domain_model_shortlink (
 	t3_origuid int(11) DEFAULT '0' NOT NULL,
 
 	sys_language_uid int(11) NOT NULL DEFAULT '0',
-  l18n_parent int(11) NOT NULL DEFAULT '0',
-  l18n_diffsource mediumtext,
+	l18n_parent int(11) NOT NULL DEFAULT '0',
+	l18n_diffsource mediumtext,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
