@@ -28,6 +28,10 @@
 
 ## Change Log
 
+2016-06-08  Hendrik Papmahl <hpa@move-elevator.de>
+
+    * 1.6.1 - fix icon path
+    
 2016-06-08  Philipp Heckelt <phe@move-elevator.de>
 
     * 1.6.0 - add multilanguage support
