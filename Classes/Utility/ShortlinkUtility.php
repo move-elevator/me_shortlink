@@ -95,7 +95,7 @@ class ShortlinkUtility
 
         $GLOBALS['TSFE']->initFEuser();
         $GLOBALS['TSFE']->initTemplate();
-        Bootstrap::getInstance()->loadCachedTca();
+        Bootstrap::getInstance()->loadBaseTca();
         $GLOBALS['TSFE']->fetch_the_id();
         $GLOBALS['TSFE']->getConfigArray();
         $GLOBALS['TSFE']->cObj = $objectManager->get('TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer');
