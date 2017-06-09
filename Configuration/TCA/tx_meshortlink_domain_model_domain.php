@@ -4,8 +4,29 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$TCA['tx_meshortlink_domain_model_domain'] = array(
-    'ctrl' => $TCA['tx_meshortlink_domain_model_domain']['ctrl'],
+$GLOBALS['TCA']['tx_meshortlink_domain_model_domain'] = array(
+    'ctrl' => array(
+        'title' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+            'locallang_db.xlf:tx_meshortlink_domain_model_domain',
+        'label' => 'name',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => true,
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ),
+        'versioningWS' => true,
+        'versioning_followPages' => true,
+        'origUid' => 't3_origuid',
+        'searchFields' => 'name,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('me_shortlink') .
+            'Configuration/TCA/Domain.php',
+        'iconfile' => 'EXT:me_shortlink/Resources/Public/Icons/tx_meshortlink_domain_model_domain.png'
+    ),
     'interface' => array(
         'showRecordFieldList' => 'hidden, name',
     ),
@@ -78,3 +99,5 @@ $TCA['tx_meshortlink_domain_model_domain'] = array(
         ),
     ),
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_meshortlink_domain_model_domain');
