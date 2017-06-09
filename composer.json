@@ -18,5 +18,15 @@
     "branch-alias": {
       "dev-master": "master"
     }
+  },
+  "autoload": {
+    "psr-4": {
+      "MoveElevator\\MeGallery\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MoveElevator\\MeGallery\\Tests\\": "Tests"
+    }
   }
 }
