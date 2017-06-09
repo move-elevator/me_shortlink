@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "MoveElevator\\MeGallery\\": "Classes"
+      "MoveElevator\\MeShortlink\\": "Classes"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "MoveElevator\\MeGallery\\Tests\\": "Tests"
+      "MoveElevator\\MeShortlink\\Tests\\": "Tests"
     }
   }
 }
