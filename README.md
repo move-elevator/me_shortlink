@@ -28,6 +28,10 @@
 
 ## Change Log
 
+2017-06-09  Philipp Heckelt <phe@move-elevator.de>
+
+    * 1.7.0 - add TYPO3v8 compatibility
+
 2016-06-08  Hendrik Papmahl <hpa@move-elevator.de>
 
     * 1.6.1 - fix icon path

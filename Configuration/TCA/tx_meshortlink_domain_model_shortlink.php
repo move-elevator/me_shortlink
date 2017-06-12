@@ -4,8 +4,33 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$TCA['tx_meshortlink_domain_model_shortlink'] = array(
-    'ctrl' => $TCA['tx_meshortlink_domain_model_shortlink']['ctrl'],
+$GLOBALS['TCA']['tx_meshortlink_domain_model_shortlink'] = array(
+    'ctrl' => array(
+        'title' => 'LLL:EXT:me_shortlink/Resources/Private/Language/' .
+            'locallang_db.xlf:tx_meshortlink_domain_model_shortlink',
+        'label' => 'title',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => true,
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ),
+        'versioningWS' => true,
+        'versioning_followPages' => true,
+        'origUid' => 't3_origuid',
+        'searchFields' => 'title,page,url,params,',
+        'dynamicConfigFile' =>
+            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('me_shortlink') .
+            'Configuration/TCA/Shortlink.php',
+        'iconfile' => 'EXT:me_shortlink/Resources/Public/Icons/tx_meshortlink_domain_model_shortlink.png',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l18n_parent',
+        'transOrigDiffSourceField' => 'l18n_diffsource'
+    ),
     'interface' => array(
         'showRecordFieldList' => 'hidden, title, page, url, params',
     ),
@@ -132,7 +157,9 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
                     array('', 0),
                 ),
                 'foreign_table' =>'tx_meshortlink_domain_model_shortlink',
-                'foreign_table_where' => 'AND tx_meshortlink_domain_model_shortlink.uid=###CURRENT_PID### AND tx_meshortlink_domain_model_shortlink.sys_language_uid IN (-1,0)',
+                'foreign_table_where' =>
+                    'AND tx_meshortlink_domain_model_shortlink.uid=###CURRENT_PID### ' .
+                    'AND tx_meshortlink_domain_model_shortlink.sys_language_uid IN (-1,0)',
             )
         ),
         'l18n_diffsource' => array(
@@ -142,3 +169,5 @@ $TCA['tx_meshortlink_domain_model_shortlink'] = array(
         ),
     ),
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_meshortlink_domain_model_shortlink');
